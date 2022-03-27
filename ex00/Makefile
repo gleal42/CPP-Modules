@@ -8,7 +8,7 @@ SRCS := megaphone.cpp
 all: $(NAME)
 $(NAME) : $(OBJS)
 clean:
-	rm -rf **/*.o
+	rm -rf *.o
 fclean: clean
 	rm -rf $(NAME)
 re: fclean all
