@@ -1,16 +1,28 @@
-SHELL = /bin/sh
-CC := c++
-CFLAGS := -Wall -Wextra -Werror -std=c++98
-NAME := megaphone
-OBJS := $(SRCS:.cpp=.o)
-SRCS := megaphone.cpp
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/28 18:48:14 by gleal             #+#    #+#              #
+#    Updated: 2022/03/28 19:45:42by gleal            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
+CXX = c++
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98
+SRCS := megaphone.cpp
+OBJS := $(SRCS:.cpp=.o)
+NAME := megaphone
 all: $(NAME)
-$(NAME) : $(OBJS)
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+$(OBJS): $(SRCS) Makefile
 clean:
-	rm -rf *.o
+	$(RM) $(OBJS)
 fclean: clean
-	rm -rf $(NAME)
+	$(RM) $(NAME)
 re: fclean all
 .PHONY: all clean fclean re
-.SUFFIXES: .cpp .o
+.SUFFIXES: .o .cpp
