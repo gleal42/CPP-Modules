@@ -6,43 +6,58 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:07:53 by gleal             #+#    #+#             */
-/*   Updated: 2022/03/30 02:24:27 by gleal            ###   ########.fr       */
+/*   Updated: 2022/03/30 23:41:15 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Contact.hpp"
 
-void    Contact::add_fst_name(std::string str, std::string &ptr)
+void    Contact::add_text_to(int nbr)
 {
-	fst_name = str;
-	ptr.clear();
-	std::cout << "You just added " << fst_name << " as a first name" << std::endl;
+	std::string	input;
+
+	while (input.empty())
+		getline(std::cin, input);
+	if (nbr == FSTNAME)
+	 	fst_name = input;
+	else if (nbr == LASTNAME)
+	 	last_name = input;
+	else if (nbr == NICKNAME)
+	 	nickname = input;
+	else if (nbr == PHONENUMBER)
+	 	phone_number = input;
+	else if (nbr == DARKSECRET)
+	 	dark_secret = input;
 }
 
-void    Contact::add_last_name(std::string str, std::string &ptr)
+void    Contact::ask_for_input(int nbr)
 {
-	last_name = str;
-	ptr.clear();
-	std::cout << "You just added " << last_name << " as a last name" << std::endl;
+	static std::string questions[5] = {
+		"first name",
+		"last name",
+		"nickname",
+		"phone number",
+		"dark secret"
+	};
+	std::cout << "Please write your " << questions[nbr] << std::endl;
 }
 
-void    Contact::add_nickname(std::string str, std::string &ptr)
+bool	Contact::is_empty(void)
 {
-	nickname = str;
-	ptr.clear();
-	std::cout << "You just added " << nickname << " as a nickname" << std::endl;
+	if (fst_name.empty()
+	&& last_name.empty()
+	&& nickname.empty()
+	&& phone_number.empty()
+	&& dark_secret.empty())
+		return (1);
+	return (0);
 }
 
-void    Contact::add_phone_number(std::string str, std::string &ptr)
+void	Contact::print_cont(void)
 {
-	phone_number = str;
-	ptr.clear();
-	std::cout << "You just added " << phone_number << " as a phone_number" << std::endl;
-}
-
-void    Contact::add_dark_secret(std::string str, std::string &ptr)
-{
-	dark_secret= str;
-	ptr.clear();
-	std::cout << "You just added " <<  dark_secret << " as a dark_secret" << std::endl;
+	std::cout << fst_name << " ";	
+	std::cout << last_name << " ";	
+	std::cout << nickname << " ";	
+	std::cout << phone_number << " ";	
+	std::cout << dark_secret;	
 }

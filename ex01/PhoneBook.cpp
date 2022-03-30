@@ -15,30 +15,29 @@
 # include <iomanip>
 # include "PhoneBook.hpp"
 
+void PhoneBook::search_contacts(PhoneBook phbook)
+{
+	int i;
+
+	i = 0;
+	while (!phbook.cont[i].is_empty())
+	{
+		phbook.cont[i].print_cont();
+		i++;
+	}
+}
+
 void PhoneBook::add_contact(PhoneBook &phbook, int i)
 {
-	std::string	input;
-
-	std::cout << "Please write your first name" << std::endl;
-	while (input.empty())
-		getline(std::cin, input);
-	phbook.cont[i].add_fst_name(input, input);
-	std::cout << "Please write your last name" << std::endl;
-	while (input.empty())
-		getline(std::cin, input);
-	phbook.cont[i].add_last_name(input, input);
-	std::cout << "Please write your nickname" << std::endl;
-	while (input.empty())
-		getline(std::cin, input);
-	phbook.cont[i].add_nickname(input, input);
-	std::cout << "Please write your phone number" << std::endl;
-	while (input.empty())
-		getline(std::cin, input);
-	phbook.cont[i].add_phone_number(input, input);
-	std::cout << "Please write your dark secret" << std::endl;
-	while (input.empty())
-		getline(std::cin, input);
-	phbook.cont[i].add_dark_secret(input, input);
+	int texttype;
+	
+	texttype = 0;
+	while (texttype < 5)
+	{
+		phbook.cont[i].ask_for_input(texttype);
+		phbook.cont[i].add_text_to(texttype);
+		texttype++;
+	}
 }
 
 int main(void)
@@ -57,7 +56,7 @@ int main(void)
 			i = (i + 1) % 8;
 		}
 		else if	(std::strcmp(input.c_str(), "SEARCH") == 0)
-			;
+			phbook.search_contacts(phbook);
 		else if (std::strcmp(input.c_str(), "EXIT") == 0)
 			return (0);
 	}
