@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:07:53 by gleal             #+#    #+#             */
-/*   Updated: 2022/03/30 23:41:15 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/01 18:53:13 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,48 @@ bool	Contact::is_empty(void)
 	return (0);
 }
 
-void	Contact::print_cont(void)
+void	Contact::print_collumn(std::string str)
 {
-	std::cout << fst_name << " ";	
-	std::cout << last_name << " ";	
-	std::cout << nickname << " ";	
-	std::cout << phone_number << " ";	
-	std::cout << dark_secret;	
+	std::string temp;
+
+	if (str.length() > 10)
+	{
+		temp = str.substr(0, 9);
+		std::cout << temp ;	
+		std::cout << "." ;	
+	}
+	else
+	{
+		std::cout.flags (std::ios::right);
+		std::cout.width(10);
+		std::cout << str ;	
+	}
+}
+
+void	Contact::print_template(const std::string &fst, const std::string &sec,const  std::string &thrd, const std::string &lst)
+{
+	std::cout << "|" ;	
+	print_collumn(fst);
+	std::cout << "|" ;	
+	print_collumn(sec);
+	std::cout << "|" ;
+	print_collumn(thrd);
+	std::cout << "|" ;
+	print_collumn(lst);
+	std::cout << "|" ;
+	std::cout << std::endl;	
+}
+
+void	Contact::print_vals_temp(std::string index)
+{
+	print_template(index, fst_name, last_name, nickname);
+}
+
+void	Contact::print_all_vals(void)
+{
+	std::cout << fst_name << std::endl;
+	std::cout << last_name << std::endl;
+	std::cout << nickname << std::endl;
+	std::cout << phone_number << std::endl;
+	std::cout << dark_secret << std::endl;
 }
