@@ -18,13 +18,40 @@
 void PhoneBook::search_contacts(PhoneBook phbook)
 {
 	int i;
+	int contact_nbr;
+	std::string index;
 
-	i = 0;
-	while (!phbook.cont[i].is_empty())
+	contact_nbr = 0;
+	phbook.cont[contact_nbr].print_template("index", "first name", "last name", "nickname");
+	while (!phbook.cont[contact_nbr].is_empty())
 	{
-		phbook.cont[i].print_cont();
-		i++;
+		index = std::to_string(contact_nbr);
+		phbook.cont[contact_nbr].print_vals_temp(index);
+		contact_nbr++;
 	}
+	index.clear();
+	if (contact_nbr == 0)
+		return ;
+	while (index.empty())
+	{
+		std::cout << "Please write a valid index for desired contact" << std::endl;
+		getline(std::cin, index);
+		if (index.empty())
+			continue ;
+		if (index.find_first_not_of("0123456789") != std::string::npos)
+		{
+			std::cerr << "Value non-numeric" << std::endl;
+			index.clear();
+			continue ;
+		}
+		i = std::stoi(index);
+		if (i < 0 || i >= contact_nbr)
+		{
+			std::cerr << "Value out of range" << std::endl;
+			index.clear();
+		}
+	}
+	phbook.cont[i].print_all_vals();
 }
 
 void PhoneBook::add_contact(PhoneBook &phbook, int i)
