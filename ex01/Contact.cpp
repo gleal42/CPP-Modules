@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:07:53 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/01 18:53:13 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/04 23:55:09 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,6 @@ void    Contact::add_text_to(int nbr)
 	 	dark_secret = input;
 }
 
-void    Contact::ask_for_input(int nbr)
-{
-	static std::string questions[5] = {
-		"first name",
-		"last name",
-		"nickname",
-		"phone number",
-		"dark secret"
-	};
-	std::cout << "Please write your " << questions[nbr] << std::endl;
-}
 
 bool	Contact::is_empty(void)
 {
@@ -85,7 +74,7 @@ void	Contact::print_template(const std::string &fst, const std::string &sec,cons
 	std::cout << std::endl;	
 }
 
-void	Contact::print_vals_temp(std::string index)
+void	Contact::print_vals_template(std::string index)
 {
 	print_template(index, fst_name, last_name, nickname);
 }

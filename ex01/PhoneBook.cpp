@@ -26,7 +26,7 @@ void PhoneBook::search_contacts(PhoneBook phbook)
 	while (!phbook.cont[contact_nbr].is_empty())
 	{
 		index = std::to_string(contact_nbr);
-		phbook.cont[contact_nbr].print_vals_temp(index);
+		phbook.cont[contact_nbr].print_vals_template(index);
 		contact_nbr++;
 	}
 	index.clear();
@@ -40,7 +40,7 @@ void PhoneBook::search_contacts(PhoneBook phbook)
 			continue ;
 		if (index.find_first_not_of("0123456789") != std::string::npos)
 		{
-			std::cerr << "Value non-numeric" << std::endl;
+			std::cerr << "Value is not unsigned number" << std::endl;
 			index.clear();
 			continue ;
 		}
@@ -54,6 +54,18 @@ void PhoneBook::search_contacts(PhoneBook phbook)
 	phbook.cont[i].print_all_vals();
 }
 
+void    PhoneBook::ask_for_input(int nbr)
+{
+	static std::string questions[5] = {
+		"first name",
+		"last name",
+		"nickname",
+		"phone number",
+		"dark secret"
+	};
+	std::cout << "Please write your " << questions[nbr] << std::endl;
+}
+
 void PhoneBook::add_contact(PhoneBook &phbook, int i)
 {
 	int texttype;
@@ -61,7 +73,7 @@ void PhoneBook::add_contact(PhoneBook &phbook, int i)
 	texttype = 0;
 	while (texttype < 5)
 	{
-		phbook.cont[i].ask_for_input(texttype);
+		ask_for_input(texttype);
 		phbook.cont[i].add_text_to(texttype);
 		texttype++;
 	}
