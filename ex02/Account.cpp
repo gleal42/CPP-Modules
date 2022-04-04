@@ -6,13 +6,14 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 20:25:57 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/04 01:47:31 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/04 21:41:01 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 # include <iostream>
 # include <vector>
+# include <ctime>
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -21,11 +22,19 @@ int Account::_totalNbWithdrawals = 0;
 
 Account::Account(int value)
 {
+	time_t	rawtime;
+	struct tm *timeinfo;
+	char buffer[80];
+	
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::cout << buffer;
+	
 	_accountIndex = getNbAccounts();
 	_amount = value;
 	_nbAccounts++;
-	_totalAmount += _amount;
-
+	_totalAmount += _amount;	
 	std::cout << "index:"
 	<< _accountIndex
 	<< ";amount:"
@@ -56,6 +65,15 @@ int	Account::getNbWithdrawals( void )
 
 void	Account::displayAccountsInfos( void )
 {
+	time_t	rawtime;
+	struct tm *timeinfo;
+	char buffer[80];
+	
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::cout << buffer;
+
 	std::cout
 	<< "accounts:" << getNbAccounts()
 	<< ";total:" << getTotalAmount()
@@ -66,12 +84,23 @@ void	Account::displayAccountsInfos( void )
 
 void	Account::makeDeposit( int deposit )
 {
+	time_t	rawtime;
+	struct tm *timeinfo;
+	char buffer[80];
+	
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::cout << buffer;
+
 	std::cout
 	<< "index:" << _accountIndex
 	<< ";p_amount:" << checkAmount()
 	<< ";deposit:" << deposit;
 	_amount += deposit;
+	_totalAmount += deposit;
 	_nbDeposits += 1;
+	_totalNbDeposits += 1;
 	std::cout
 	<< ";amount:" << checkAmount()
 	<< ";nb_deposits:"<< _nbDeposits
@@ -82,8 +111,33 @@ void	Account::makeDeposit( int deposit )
 
 bool	Account::makeWithdrawal( int withdrawal )
 {
+	time_t	rawtime;
+	struct tm *timeinfo;
+	char buffer[80];
+	
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::cout << buffer;
 
-	return(false);	
+	std::cout
+	<< "index:" << _accountIndex
+	<< ";p_amount:" << checkAmount()
+	<< ";withdrawal:";
+	if (checkAmount() < withdrawal)
+	{
+		std::cout << "refused" << std::endl;
+		return(false);	
+	}
+	_amount -= withdrawal;
+	_totalAmount -= withdrawal;
+	_nbWithdrawals += 1;
+	_totalNbWithdrawals += 1;
+	std::cout << withdrawal
+	<< ";amount:" << checkAmount()
+	<< ";nb_withdrawals:"<< _nbWithdrawals
+	<< std::endl;
+	return(true);	
 }
 
 int		Account::checkAmount( void ) const
@@ -93,16 +147,34 @@ int		Account::checkAmount( void ) const
 
 void	Account::displayStatus( void ) const
 {
+	time_t	rawtime;
+	struct tm *timeinfo;
+	char buffer[80];
+	
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::cout << buffer;
+
 	std::cout
 	<< "index:" << _accountIndex
 	<< ";amount:" << checkAmount()
 	<< ";deposits:" << _nbDeposits
-	<< "withdrawals" << _nbWithdrawals 
+	<< ";withdrawals:" << _nbWithdrawals 
 	<< std::endl;	
 }
 
 Account::~Account()
 {
+	time_t	rawtime;
+	struct tm *timeinfo;
+	char buffer[80];
+	
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::cout << buffer;
+	
 	std::cout
 	<< "index:" << Account::_accountIndex
 	<< ";amount:" << checkAmount()
