@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:07:53 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/04 23:55:09 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/05 20:53:02 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void    Contact::add_text_to(int nbr)
 	else if (nbr == DARKSECRET)
 	 	dark_secret = input;
 }
-
 
 bool	Contact::is_empty(void)
 {
