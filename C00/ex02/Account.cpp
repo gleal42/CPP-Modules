@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 20:25:57 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/04 21:41:01 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/05 20:29:25 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ Account::Account(int value)
 	struct tm *timeinfo;
 	char buffer[80];
 	
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::time(&rawtime);
+	timeinfo = std::localtime(&rawtime);
+	std::strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
 	std::cout << buffer;
 	
 	_accountIndex = getNbAccounts();
@@ -69,9 +69,9 @@ void	Account::displayAccountsInfos( void )
 	struct tm *timeinfo;
 	char buffer[80];
 	
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::time(&rawtime);
+	timeinfo = std::localtime(&rawtime);
+	std::strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
 	std::cout << buffer;
 
 	std::cout
@@ -88,9 +88,9 @@ void	Account::makeDeposit( int deposit )
 	struct tm *timeinfo;
 	char buffer[80];
 	
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::time(&rawtime);
+	timeinfo = std::localtime(&rawtime);
+	std::strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
 	std::cout << buffer;
 
 	std::cout
@@ -107,17 +107,15 @@ void	Account::makeDeposit( int deposit )
 	<< std::endl;
 }
 
-// [19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
-
 bool	Account::makeWithdrawal( int withdrawal )
 {
 	time_t	rawtime;
 	struct tm *timeinfo;
 	char buffer[80];
 	
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::time(&rawtime);
+	timeinfo = std::localtime(&rawtime);
+	std::strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
 	std::cout << buffer;
 
 	std::cout
@@ -151,9 +149,9 @@ void	Account::displayStatus( void ) const
 	struct tm *timeinfo;
 	char buffer[80];
 	
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::time(&rawtime);
+	timeinfo = std::localtime(&rawtime);
+	std::strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
 	std::cout << buffer;
 
 	std::cout
@@ -170,9 +168,9 @@ Account::~Account()
 	struct tm *timeinfo;
 	char buffer[80];
 	
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
+	std::time(&rawtime);
+	timeinfo = std::localtime(&rawtime);
+	std::strftime(buffer, 80, "[%Y%m%d_%H%M%S] ", timeinfo);
 	std::cout << buffer;
 	
 	std::cout
