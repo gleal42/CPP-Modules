@@ -6,17 +6,31 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:07:53 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/05 20:53:02 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/05 21:12:48 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Contact.hpp"
 
+int    Contact::has_non_printable_char(std::string	input)
+{
+    int length = input.length();
+	int i = 0;
+	while (i < length)
+	{
+        int c = input[i];
+        if (!isprint(c))
+            return (1);
+		i++;
+	}
+	return (0);
+}
+
 void    Contact::add_text_to(int nbr)
 {
 	std::string	input;
 
-	while (input.empty())
+	while (input.empty() || has_non_printable_char(input))
 		getline(std::cin, input);
 	if (nbr == FSTNAME)
 	 	fst_name = input;

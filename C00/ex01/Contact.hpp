@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:11:52 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/05 20:53:10 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/05 21:12:37 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class Contact {
         std::string phone_number;
         std::string dark_secret;
         void    print_collumn(std::string str);
+        int    has_non_printable_char(std::string	input);
     public:
         void    add_text_to(int nbr);
         bool    is_empty(void);
