@@ -23,7 +23,7 @@ void PhoneBook::search_contacts(PhoneBook phbook)
 
 	contact_nbr = 0;
 	phbook.cont[contact_nbr].print_template("index", "first name", "last name", "nickname");
-	while (!phbook.cont[contact_nbr].is_empty())
+	while (!phbook.cont[contact_nbr].is_empty() && contact_nbr < 8)
 	{
 		index = std::to_string(contact_nbr);
 		phbook.cont[contact_nbr].print_vals_template(index);
