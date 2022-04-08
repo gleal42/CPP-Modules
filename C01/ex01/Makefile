@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
+#    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 23:32:31 by gleal             #+#    #+#              #
-#    Updated: 2022/04/07 00:58:18 by gleal            ###   ########.fr        #
+#    Updated: 2022/04/08 20:33:38 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXXFLAGS:=-Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CXXFLAGS:=-Wall -Wextra -Werror -std=c++98
 CXX:=c++
 NAME:=zombieHorde
 SRCS:=main.cpp \

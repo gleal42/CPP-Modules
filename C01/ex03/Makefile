@@ -5,21 +5,25 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/08 19:05:24 by gleal             #+#    #+#              #
-#    Updated: 2022/04/08 20:36:11 by gleal            ###   ########.fr        #
+#    Created: 2022/04/08 20:03:02 by gleal             #+#    #+#              #
+#    Updated: 2022/04/08 20:39:26 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=hithisisbrain
 CXX=c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98
-all: $(NAME)
-$(NAME): main.cpp Makefile
-	$(CXX) $(CXXFLAGS) main.cpp -o $(NAME)
+NAME=unnecessaryviolence
+SRCS=HumanA.cpp \
+	HumanB.cpp \
+	Weapon.cpp \
+	main.cpp \
+	HumanB.cpp
+all:$(NAME)
+$(NAME): $(SRCS)
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $@
 clean:
 	$(RM) -r *.o
-fclean: clean
-	$(RM) -r hithisisbrain
-
+fclean:
+	$(RM) $(NAME)
 re: fclean all
 .PHONY: all clean fclean re
