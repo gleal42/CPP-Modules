@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 23:36:30 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/06 20:55:16 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/08 18:20:27 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@ int main(void)
 {
     Zombie  defaultzb("Default Zombie");
     Zombie  *alloczb = NULL;
-    Zombie  *randomzb = NULL;
 
     defaultzb.announce();
-    alloczb = (*alloczb).newZombie("Allocated Zombie");
+    alloczb = newZombie("Allocated Zombie");
     alloczb->announce();
     delete (alloczb);
-    randomzb->randomChump("Random Zombie");
+    randomChump("Random Zombie");
 }
