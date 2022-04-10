@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 23:36:30 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/08 18:41:36 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/10 20:06:42 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(void)
 {
-    Zombie  *horde = NULL;
+    Zombie  *horde = nullptr;
     int i = 0;
 
     horde = zombieHorde(2, "biiitch");
