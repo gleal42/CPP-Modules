@@ -5,6 +5,14 @@
 #include <iostream>
 #include <map>
 
+enum e_num{
+	DEBUG,
+	INFO,
+	WARNING,
+	ERROR,
+	OTHER,
+};
+
 class Harl{
     public:
         void    complain( std::string level );

@@ -12,14 +12,6 @@
 
 # include "Harl.hpp"
 
-enum e_num{
-	DEBUG,
-	INFO,
-	WARNING,
-	ERROR,
-	OTHER,
-};
-
 enum e_num type_of_complaint( std::string level )
 {
 	std::string lst[4];
