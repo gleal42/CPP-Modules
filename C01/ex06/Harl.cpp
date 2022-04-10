@@ -42,42 +42,60 @@ enum e_num type_of_complaint( std::string level )
 
 void	Harl::complain( std::string level )
 {
-	void (Harl::*fts[5])();
 	enum e_num num;
-
-	fts[0] = &Harl::debug;
-	fts[1] = &Harl::info;
-	fts[2] = &Harl::warning;
-	fts[3] = &Harl::error;
-	fts[4] = &Harl::other;
 	num = type_of_complaint(level);
-	(this->*(fts[num]))();
+	switch(num){
+		case DEBUG:
+			Harl::debug();
+			Harl::info();
+			Harl::warning();
+			Harl::error();
+			break ;
+		case INFO:
+			Harl::info();
+			Harl::warning();
+			Harl::error();
+			break ;
+		case WARNING:
+			Harl::warning();
+			Harl::error();
+			break ;
+		case ERROR:
+			Harl::error();
+			break ;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+	}
 }
 
 void	Harl::debug( void )
 {
+	std::cout << "[ DEBUG ]" << std::endl;
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special- ketchup burger. I really do!"
+	<< std::endl
 	<< std::endl;
 }
 
 void	Harl::info( void )
 {
+	std::cout << "[ INFO ]" << std::endl;
 	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!"
+	<< std::endl
 	<< std::endl;
 }
 
 void	Harl::warning( void )
 {
+	std::cout << "[ WARNING ]" << std::endl;
 	std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month."
+	<< std::endl
 	<< std::endl;
 }
 
 void	Harl::error( void )
 {
+	std::cout << "[ ERROR ]" << std::endl;
 	std::cout << "This is unacceptable! I want to speak to the manager now."
+	<< std::endl
 	<< std::endl;
-}
-void	Harl::other( void )
-{
-	std::cerr << "This type of comment doesn't exist" << std::endl;
 }
