@@ -1,7 +1,6 @@
 # CPP-Modules
 Introduction to C++
 
-___
 ## C02
 
 ### Main Concepts
