@@ -6,24 +6,18 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:21:22 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/12 00:58:02 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/12 18:11:23 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Fixed.hpp"
 
-const int Fixed::nbits = 8;
+const int Fixed::fracbits = 8;
 
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called" << std::endl;
 	this->fixedpoint = 0;
-}
-
-Fixed::Fixed(const Fixed &fixed)
-{
-	std::cout << "Copy constructor called" << std::endl;
-	fixedpoint = fixed.getRawBits();
 }
 
 Fixed &Fixed::operator= (const Fixed &fixed)
@@ -33,9 +27,14 @@ Fixed &Fixed::operator= (const Fixed &fixed)
 	return *this;
 }
 
+Fixed::Fixed(const Fixed &fixed)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = fixed;
+}
+
 int Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (fixedpoint);
 }
 void Fixed::setRawBits( int const raw )
@@ -50,25 +49,28 @@ Fixed::~Fixed()
 
 Fixed::Fixed(const int nbr)
 {
-	
+	std::cout << "Int constructor called" << std::endl;
+	this->fixedpoint = nbr << fracbits;
 }
 
 Fixed::Fixed(const float nbr)
 {
-
+	std::cout << "Float constructor called" << std::endl;
+	this->fixedpoint = (const int)roundf(nbr * (1 << fracbits));
 }
 
 float Fixed::toFloat( void ) const
 {
-	
+	return ((float)fixedpoint/(float)(1 << fracbits));
 }
 
 int Fixed::toInt( void ) const
 {
-
+	return (this->fixedpoint >> fracbits);
 }
 
-Fixed &Fixed::operator<<(std::ostream stream)
+std::ostream &operator<<(std::ostream &stream, const Fixed& fp)
 {
-
+	stream << fp.toFloat();
+	return stream;
 }
