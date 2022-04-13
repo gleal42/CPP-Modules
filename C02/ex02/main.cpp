@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:21:24 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/13 00:52:20 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/13 01:30:09 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int main( void )
 
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
-
 
 	// extra tests
 	std::cout << std::endl;
