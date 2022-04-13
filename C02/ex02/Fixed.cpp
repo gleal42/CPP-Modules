@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:21:22 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/13 00:11:33 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/13 00:59:52 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,17 @@ const int Fixed::fracbits = 8;
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
 	this->fixedpoint = 0;
 }
 
 Fixed &Fixed::operator= (const Fixed &fixed)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	fixedpoint = fixed.getRawBits();
 	return *this;
 }
 
 Fixed::Fixed(const Fixed &fixed)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = fixed;
 }
 
@@ -44,19 +41,17 @@ void Fixed::setRawBits( int const raw )
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	
 }
 
 Fixed::Fixed(const int nbr)
 {
-	std::cout << "Int constructor called" << std::endl;
-	this->fixedpoint = nbr << fracbits;
+	setRawBits(nbr << fracbits);
 }
 
 Fixed::Fixed(const float nbr)
 {
-	std::cout << "Float constructor called" << std::endl;
-	this->fixedpoint = (const int)roundf(nbr * (1 << fracbits));
+	setRawBits(roundf(nbr * (1 << fracbits)));
 }
 
 float Fixed::toFloat( void ) const
@@ -66,7 +61,7 @@ float Fixed::toFloat( void ) const
 
 int Fixed::toInt( void ) const
 {
-	return (this->fixedpoint >> fracbits);
+	return (fixedpoint >> fracbits);
 }
 
 std::ostream &operator<<(std::ostream &stream, const Fixed& fp)
@@ -108,56 +103,54 @@ bool Fixed::operator!=(const Fixed &fixed)
 Fixed Fixed::operator+(const Fixed &fixed)
 {
 	Fixed temp;
-	temp.fixedpoint = fixedpoint + fixed.fixedpoint;
+	temp.setRawBits(fixedpoint + fixed.fixedpoint);
 	return temp;
 }
 
 Fixed Fixed::operator-(const Fixed &fixed)
 {
 	Fixed temp;
-	temp.fixedpoint = fixedpoint - fixed.fixedpoint;
+	temp.setRawBits(fixedpoint - fixed.fixedpoint);
 	return temp;
 }
 
 Fixed Fixed::operator*(const Fixed &fixed)
 {
-	Fixed temp;
-	temp.fixedpoint = fixedpoint * fixed.fixedpoint;
+	Fixed temp(this->toFloat() * fixed.toFloat());
 	return temp;
 }
 
 Fixed Fixed::operator/(const Fixed &fixed)
 {
-	Fixed temp;
-	temp.fixedpoint = fixedpoint / fixed.fixedpoint;
+	Fixed temp(this->toFloat() / fixed.toFloat());
 	return temp;
 }
 
 Fixed Fixed::operator++()
 {
 	Fixed temp;
-	temp.fixedpoint = ++fixedpoint;
+	temp.setRawBits(++fixedpoint);
 	return temp;
 }
 
 Fixed Fixed::operator++(int)
 {
 	Fixed temp;
-	temp.fixedpoint = fixedpoint++;
+	temp.setRawBits(fixedpoint++);
 	return temp;
 }
 
 Fixed Fixed::operator--()
 {
 	Fixed temp;
-	temp.fixedpoint = --fixedpoint;
+	temp.setRawBits(--fixedpoint);
 	return temp;
 }
 
 Fixed Fixed::operator--(int)
 {
 	Fixed temp;
-	temp.fixedpoint = fixedpoint--;
+	temp.setRawBits(fixedpoint--);
 	return temp;
 }
 
