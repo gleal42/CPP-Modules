@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:21:22 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/13 21:54:27 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/14 22:05:12 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ Fixed::Fixed(const int nbr)
 
 Fixed::Fixed(const float nbr)
 {
+	// std::cout << "default Const w args Fixed " << nbr << std::endl;
 	setRawBits(roundf(nbr * (1 << fracbits)));
 }
 

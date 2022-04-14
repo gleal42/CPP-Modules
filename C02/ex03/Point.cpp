@@ -14,22 +14,24 @@
 
 Point::Point(): x(), y()
 {
+	
 }
 
 Point::Point(const float nx, const float ny): x(nx), y(ny)
 {
-
 }
 
 Point::Point(const Point &point): x(point.x), y(point.y)
 {
-	std::cout << "calling constructor" << std::endl;
+
 }
 
 Point &Point::operator=(const Point &point)
 {
-	this->~Point();
-    new(this) Point(point.get_x().toFloat(), point.get_y().toFloat());
+	if (this != &point){
+		this->~Point();
+		new (this) Point(point);
+	}
 	return *this;
 }
 
@@ -47,6 +49,3 @@ Point::~Point()
 {
 
 }
-
-// std::cerr << "x and y are constants, please create a new point" << std::endl;
-// this->x.setRawBits(point.x.toFloat());
