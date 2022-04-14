@@ -30,7 +30,7 @@ Point &Point::operator=(const Point &point)
 {
 	if (this != &point){
 		this->~Point();
-		new (this) Point(point);
+		new(this) Point(point);
 	}
 	return *this;
 }

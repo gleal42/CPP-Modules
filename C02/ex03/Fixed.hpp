@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 01:18:55 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/13 01:32:24 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/14 23:37:52 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ class Fixed
 		bool operator==(const Fixed &fixed);
 		bool operator!=(const Fixed &fixed);
 		Fixed operator+(const Fixed &fixed);
+		Fixed operator-(const Fixed &fixed) const;
 		Fixed operator-(const Fixed &fixed);
 		Fixed operator*(const Fixed &fixed);
 		Fixed operator/(const Fixed &fixed);
@@ -58,6 +59,8 @@ class Fixed
 		static const Fixed& min(const Fixed& a, const Fixed&b);
 		static Fixed& max(Fixed& a, Fixed&b);
 		static const Fixed& max(const Fixed& a, const Fixed&b);
+/* -------------------------- Ex03 extra functions -------------------------- */
+		bool is_zero_to_one( void );
 };
 
 //Ex01 - continuation

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:21:22 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/14 22:05:12 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/14 23:39:47 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,13 @@ Fixed Fixed::operator+(const Fixed &fixed)
 	return temp;
 }
 
+Fixed Fixed::operator-(const Fixed &fixed) const
+{
+	Fixed temp;
+	temp.setRawBits(fixedpoint - fixed.fixedpoint);
+	return temp;
+}
+
 Fixed Fixed::operator-(const Fixed &fixed)
 {
 	Fixed temp;
@@ -193,4 +200,9 @@ const Fixed& Fixed::max(const Fixed& a, const Fixed&b)
 	else{
 		return b;
 	}	
+}
+
+bool Fixed::is_zero_to_one(void)
+{
+	return (0.0f <= this->toFloat() && this->toFloat() <= 1.0f);
 }

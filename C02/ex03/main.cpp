@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:21:24 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/14 22:09:42 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/15 00:57:20 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,21 @@
 
 int main( void )
 {
-	Point a(223.0f, 309.0f);
-	Point b(294.0f, 208.0f);
-	Point c(12.0f, 252.0f);
-	Point point(324.0f, 247.0f);
-	std::cout << bsp(a, b, c, point) << std::endl; 
-	
+	Point a(200.0f, 400.0f);
+	Point b(200.0f, 300.0f);
+	Point c(300.0f, 400.0f);
+	Point point1(200.1f, 399.9f);
+	std::cout << (bsp(a, b, c, point1) ? "inside triangle" : "outside triangle") << std::endl;
+	Point point2(199.99f, 399.0f);
+	std::cout << (bsp(a, b, c, point2) ? "inside triangle" : "outside triangle") << std::endl;
+	Point point3(233.00f, 370.0f);
+	std::cout << (bsp(a, b, c, point3) ? "inside triangle" : "outside triangle") << std::endl;
+	Point point4(273.00f, 303.0f);
+	std::cout << (bsp(a, b, c, point4) ? "inside triangle" : "outside triangle") << std::endl;
+	Point d(-200.0f, 400.0f);
+	std::cout << (bsp(d, b, c, point3) ? "inside triangle" : "outside triangle") << std::endl;
+	std::cout << (bsp(d, b, c, point4) ? "inside triangle" : "outside triangle") << std::endl;
 	return 0;
-	
 }
 
 
