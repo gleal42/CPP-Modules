@@ -23,7 +23,6 @@ Point::Point(const float nx, const float ny): x(nx), y(ny)
 
 Point::Point(const Point &point): x(point.x), y(point.y)
 {
-
 }
 
 Point &Point::operator=(const Point &point)
@@ -35,17 +34,24 @@ Point &Point::operator=(const Point &point)
 	return *this;
 }
 
-Fixed Point::get_x( void ) const
+Fixed Point::det_t(Point const &a, Point const &b, Point const &c) const
 {
-	return (x);
+	Fixed det(((b.y - c.y) * (a.x - c.x)) + ( (c.x - b.x) * (a.y - c.y)));
+	return (det);
 }
 
-Fixed Point::get_y( void ) const
+Fixed Point::bc1(Point const &b, Point const &c, Fixed &det) const
 {
-	return (y);
+	Fixed baycent1((((b.y-c.y)*(this->x-c.x)) + ((c.x-b.x)*(this->y-c.y)))/ det);
+	return (baycent1);
+}
+
+Fixed Point::bc2(Point const &a, Point const &c, Fixed &det) const
+{
+	Fixed baycent2((((c.y-a.y)*(this->x-c.x)) + ((a.x-c.x)*(this->y-c.y))) / det); 
+	return (baycent2);
 }
 
 Point::~Point()
 {
-
 }

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:21:22 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/14 23:39:47 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/15 01:29:29 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void Fixed::setRawBits( int const raw )
 
 Fixed::~Fixed()
 {
-	
 }
 
 Fixed::Fixed(const int nbr)

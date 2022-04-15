@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:27:52 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/14 23:30:36 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/15 01:27:33 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ public:
 	Point(const Point &point);
 	Point &operator=(const Point &point);
 	~Point();
-	Fixed get_x( void ) const;
-	Fixed get_y( void ) const;
 	Fixed det_t(Point const &a, Point const &b, Point const &c) const;
 	Fixed bc1(Point const &b, Point const &c, Fixed &det) const;
 	Fixed bc2(Point const &a, Point const &c, Fixed &det) const;

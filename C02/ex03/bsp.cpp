@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:26:47 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/15 00:29:00 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/15 01:27:09 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,6 @@
 *  bc3 = 1 - bc1 - bc2
 */
 
-Fixed Point::bc2(Point const &a, Point const &c, Fixed &det) const
-{
-	Fixed baycent2((((c.y-a.y)*(this->x-c.x)) + ((a.x-c.x)*(this->y-c.y))) / det); 
-	return (baycent2);
-}
-
-Fixed Point::bc1(Point const &b, Point const &c, Fixed &det) const
-{
-	Fixed baycent1((((b.y-c.y)*(this->x-c.x)) + ((c.x-b.x)*(this->y-c.y)))/ det);
-	return (baycent1);
-}
-
-Fixed Point::det_t(Point const &a, Point const &b, Point const &c) const
-{
-	Fixed det(((b.y - c.y) * (a.x - c.x)) + ( (c.x - b.x) * (a.y - c.y)));
-	return (det);
-}
 
 bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
