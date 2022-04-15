@@ -106,24 +106,28 @@ bc1 + bc2 + bc3 = 1 <=>
 
 So we can replace b3 in the 2 equations above:
 
-x = x1 * bc1 + x2 * bc2 + x3 * (1 - bc1 + bc2)
-y = y1 * bc1 + y2 * bc2 + y3 * (1 - bc1 + bc2)
+x = x1 * bc1 + x2 * bc2 + x3 * (1 - bc1 + bc2)<br/>
+y = y1 * bc1 + y2 * bc2 + y3 * (1 - bc1 + bc2)<br/>
 
-The following operations are the rearrangements that wikipedia didn't show us (this is x example, the same operations will be done for y):
-x = x1 * bc1 + x2 * bc2 + x3 - x3 \* bc1 + x3 \* bc2 <=>
-<=> x1 * bc1 - x3 \* bc1 + x2 * bc2 + x3 \* bc2 + x3 = x <=>
-<=> bc1 (x1 - x3) + bc2 (x2 + x3) + x3 - x = 0
+The following operations are the rearrangements that wikipedia didn't show us (this is x example, the same operations will be done for y): <br/>
+x = x1 * bc1 + x2 * bc2 + x3 - x3 \* bc1 + x3 \* bc2 <=> <br/>
+<=> x1 * bc1 - x3 \* bc1 + x2 * bc2 + x3 \* bc2 + x3 = x <=> <br/>
+<=> bc1 (x1 - x3) + bc2 (x2 + x3) + x3 - x = 0 <br/>
 
-Okay, so we have: <br/>
-bc1 (x1 - x3) + bc2 (x2 + x3) + x3 - x = 0 <br/>
-bc1 (y1 - y3) + bc2 (y2 + y3) + y3 - y = 0 <br/>
+We could just solve these 2 equations using algebra operations:<br/>
+First we need to solve the first equation to bc1:<br/>
+\bc1 = - (bc2 (x2 + x3) + x3) / (x1 - x3) <=> <br/>
+\bc1 = (bc2 (x2 + x3) + x3) / (x3 - x1)) <br/>
 
-We could just solve these 2 equations using algebra operations: <br/>
-bc1 = (x - x3 - bc2 (x2 + x3)) / (x1 - x3) = x - x3 - bc2\*x2 + bc2\*x3 <br/>
-(x - x3 - bc2\*x2 + bc2\*x3) / (x1 - x3)) * (y1 - y3) + bc2 (y2 + y3) + y3 - y = 0 <br/>
+And then replace this value in the second equation and solve it to bc2:<br/>
+(bc2 (x2 + x3) + x3) / (x3 - x1)) * (y1 - y3) + bc2 (y2 + y3) + y3 - y = 0 <=> <br/>
 ... <br/>
 
-However if you don't remember all the properties or find patterns to divide expressions on both sides of the equation it can get very complex and hard to follow easily.
+However this can be really a hassle to solve:
+
+In wikipedia they suggest a more straigthforward way of solving using matrices. We have: <br/>
+bc1 (x1 - x3) + bc2 (x2 + x3) + x3 - x = 0 <br/>
+bc1 (y1 - y3) + bc2 (y2 + y3) + y3 - y = 0 <br/>
 
 When we have multiple equations, we can solve them using matrices and matrices operations. <br/>
 
