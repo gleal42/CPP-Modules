@@ -114,10 +114,13 @@ x = x1 * bc1 + x2 * bc2 + x3 - x3 \* bc1 + x3 \* bc2 <=> <br/>
 <=> x1 * bc1 - x3 \* bc1 + x2 * bc2 + x3 \* bc2 + x3 = x <=> <br/>
 <=> bc1 (x1 - x3) + bc2 (x2 + x3) + x3 - x = 0 <br/>
 
+So applying the same operations to y we would get:<br/>
+bc1 (y1 - y3) + bc2 (y2 + y3) + y3 - x = 0<br/>
+
 We could just solve these 2 equations using algebra operations:<br/>
 First we need to solve the first equation to bc1:<br/>
-\bc1 = - (bc2 (x2 + x3) + x3) / (x1 - x3) <=> <br/>
-\bc1 = (bc2 (x2 + x3) + x3) / (x3 - x1)) <br/>
+bc1 = - (bc2 (x2 + x3) + x3) / (x1 - x3) <=> <br/>
+bc1 = (bc2 (x2 + x3) + x3) / (x3 - x1)) <br/>
 
 And then replace this value in the second equation and solve it to bc2:<br/>
 (bc2 (x2 + x3) + x3) / (x3 - x1)) * (y1 - y3) + bc2 (y2 + y3) + y3 - y = 0 <=> <br/>
