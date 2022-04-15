@@ -114,38 +114,38 @@ x = x1 * bc1 + x2 * bc2 + x3 - x3 \* bc1 + x3 \* bc2 <=>
 <=> x1 * bc1 - x3 \* bc1 + x2 * bc2 + x3 \* bc2 + x3 = x <=>
 <=> bc1 (x1 - x3) + bc2 (x2 + x3) + x3 - x = 0
 
-Okay, so we have:
-bc1 (x1 - x3) + bc2 (x2 + x3) + x3 - x = 0
-bc1 (y1 - y3) + bc2 (y2 + y3) + y3 - y = 0
+Okay, so we have: <br/>
+bc1 (x1 - x3) + bc2 (x2 + x3) + x3 - x = 0 <br/>
+bc1 (y1 - y3) + bc2 (y2 + y3) + y3 - y = 0 <br/>
 
-We could just solve these 2 equations using algebra operations:
-bc1 = (x - x3 - bc2 (x2 + x3)) / (x1 - x3) = x - x3 - bc2\*x2 + bc2\*x3
-(x - x3 - bc2\*x2 + bc2\*x3) / (x1 - x3)) * (y1 - y3) + bc2 (y2 + y3) + y3 - y = 0
-...
+We could just solve these 2 equations using algebra operations: <br/>
+bc1 = (x - x3 - bc2 (x2 + x3)) / (x1 - x3) = x - x3 - bc2\*x2 + bc2\*x3 <br/>
+(x - x3 - bc2\*x2 + bc2\*x3) / (x1 - x3)) * (y1 - y3) + bc2 (y2 + y3) + y3 - y = 0 <br/>
+... <br/>
 
 However if you don't remember all the properties or find patterns to divide expressions on both sides of the equation it can get very complex and hard to follow easily.
 
-When we have multiple equations, we can solve them using matrices and matrices operations.
+When we have multiple equations, we can solve them using matrices and matrices operations. <br/>
 
-bc1 (x1 - x3) + bc2 (x2 + x3)
-bc1 (y1 - y3) + bc2 (y2 + y3)
-can be represented as the following matrix:
+bc1 (x1 - x3) + bc2 (x2 + x3) <br/>
+bc1 (y1 - y3) + bc2 (y2 + y3) <br/>
 
+can be represented as the following matrix: <br/>
 \[bc1] * \[x1 - x3, x2 + x3\] <br/>
 \[bc2] * \[y1 - y3, y2 + y3\] <br/>
-https://www.mathsisfun.com/algebra/systems-linear-equations-matrices.html
-https://www.mathsisfun.com/algebra/matrix-multiplying.html
+- https://www.mathsisfun.com/algebra/systems-linear-equations-matrices.html
+- https://www.mathsisfun.com/algebra/matrix-multiplying.html
 
-And the remaining parts of the equation can also be separated into the following matrices (subtracting one by another)
-\[x3\]
-\[y3\]
-minus
-\[x\]
-\[y\]
+And the remaining parts of the equation can also be separated into the following matrices (subtracting one by another) <br/>
+\[x3\] <br/>
+\[y3\] <br/>
+minus <br/>
+\[x\] <br/>
+\[y\] <br/>
 
-So we now have multiple things represented as matrices:
+So we now have multiple things represented as matrices: <br/>
 
-Vector bc1bc2 (which contain the variables that we want to solve)
+Vector bc1bc2 (which contain the variables that we want to solve) <br/>
 \[bc1\]<br/>
 \[bc2\]<br/>
 
@@ -164,14 +164,14 @@ Point <br/>
 If we follow the wikipedia page, it then describes the inversion of a matrix:
 Here's a great page to refresh your memory:
 
-https://www.mathsisfun.com/algebra/matrix-inverse.html
-https://www.mathsisfun.com/algebra/matrix-determinant.html
-https://www.mathsisfun.com/algebra/matrix-inverse-row-operations-gauss-jordan.html
-https://www.mathsisfun.com/algebra/matrix-inverse-minors-cofactors-adjugate.html
+- https://www.mathsisfun.com/algebra/matrix-inverse.html
+- https://www.mathsisfun.com/algebra/matrix-determinant.html
+- https://www.mathsisfun.com/algebra/matrix-inverse-row-operations-gauss-jordan.html
+- https://www.mathsisfun.com/algebra/matrix-inverse-minors-cofactors-adjugate.html
 
 ### Other References
-http://totologic.blogspot.com/2014/01/accurate-point-in-triangle-test.html
-https://stackoverflow.com/questions/2049582/how-to-determine-if-a-point-is-in-a-2d-triangle
+- http://totologic.blogspot.com/2014/01/accurate-point-in-triangle-test.html
+- https://stackoverflow.com/questions/2049582/how-to-determine-if-a-point-is-in-a-2d-triangle
 
 Cédric Dufour also published a great visualizer in that thread.
-http://jsfiddle.net/PerroAZUL/zdaY8/1/
+> http://jsfiddle.net/PerroAZUL/zdaY8/1/
