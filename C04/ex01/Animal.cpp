@@ -1,41 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/17 22:55:30 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/18 01:17:26 by gleal            ###   ########.fr       */
+/*   Created: 2022/04/17 22:41:57 by gleal             #+#    #+#             */
+/*   Updated: 2022/04/18 00:12:01 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Cat.hpp" 
+# include "Animal.hpp" 
 
-Cat::Cat()
+Animal::Animal()
 {
-	std::cout << "Cat Default Constructor" << std::endl;
-	type = "Cat";
+	std::cout << "Animal Default Constructor" << std::endl;
 }
 
-Cat &Cat::operator=(const Cat &cat)
+Animal &Animal::operator=(const Animal &animal)
 {
-	type = cat.type;
+	type = animal.type;
 	return *this;
 }
 
-Cat::Cat(const Cat &cat)
+Animal::Animal(const Animal &animal)
 {
-	std::cout << "Cat Copy Destructor" << std::endl;
-	*this = cat;
+	std::cout << "Animal Copy Destructor" << std::endl;
+	*this = animal;
 }
 
-void Cat::makeSound() const
+Animal::~Animal()
 {
-	std::cout << "Miau" << std::endl;
+	std::cout << "Animal Default Destructor" << std::endl;
 }
 
-Cat::~Cat()
+std::string Animal::getType() const
 {
-	std::cout << "Cat Default Destructor" << std::endl;
+	return type;
+}
+
+void Animal::makeSound() const
+{
 }
