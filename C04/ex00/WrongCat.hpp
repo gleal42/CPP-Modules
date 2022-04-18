@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 00:12:51 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/18 00:19:58 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/18 00:43:59 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "WrongAnimal.hpp"
 
-class WrongCat : public WrongAnimal{
+class WrongCat : public WrongAnimal {
 private:
 	
 public:

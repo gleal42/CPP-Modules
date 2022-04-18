@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:52:00 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/18 00:28:47 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/18 01:02:56 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main()
 	j->makeSound();
 	meta->makeSound();
 
- 	//Tests without adding virtual (makeSound won't be redefined)
+ 	// Tests without adding virtual, function will depend on
 	const WrongAnimal* wrongmeta = new WrongAnimal();
 	const WrongAnimal* wrongcat = new WrongCat();
 
@@ -34,10 +34,12 @@ int main()
 	std::cout << wrongcat->getType() << " " << std::endl;
 	wrongmeta->makeSound();
 	wrongcat->makeSound();
+	((const WrongCat *)wrongcat)->makeSound();
 
 	delete meta;
 	delete j;
 	delete i;
-
+	delete wrongcat;
+	delete wrongmeta;
 	return 0;
 }

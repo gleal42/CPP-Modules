@@ -6,12 +6,12 @@
 #    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/17 22:45:11 by gleal             #+#    #+#              #
-#    Updated: 2022/04/18 00:13:49 by gleal            ###   ########.fr        #
+#    Updated: 2022/04/18 00:39:04 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX=c++
-CXXFLAGS= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -Wshadow
 NAME=polymorphism
 SRCS=Animal.cpp \
 	Dog.cpp \
