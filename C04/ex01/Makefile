@@ -6,7 +6,7 @@
 #    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/17 22:45:11 by gleal             #+#    #+#              #
-#    Updated: 2022/04/18 23:24:10 by gleal            ###   ########.fr        #
+#    Updated: 2022/04/19 01:06:34 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ $(NAME): $(SRCS) $(DEPS) Makefile
 	$(CXX) $(CXXFLAGS) $(SRCS) -o $@
 clean:
 	$(RM) -r *.o
+	$(RM) -r $(NAME).dSYM
 fclean: clean
 	$(RM) $(NAME)
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:52:39 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/18 23:15:43 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/19 00:55:00 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ public:
 	Cat();
 	Cat &operator=(const Cat &cat);
 	Cat(const Cat &cat);
-	~Cat();
+	virtual ~Cat();
 	void makeSound() const;
 	void print_ideas() const;
 	void new_idea(std::string idea) const;

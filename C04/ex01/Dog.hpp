@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:55:50 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/18 23:13:38 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/19 00:55:13 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ public:
 	Dog();
 	Dog &operator=(const Dog &dog);
 	Dog(const Dog &dog);
-	~Dog();
+	virtual ~Dog();
 	void makeSound() const;
 	void print_ideas() const;
 	void new_idea(std::string idea) const;
