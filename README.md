@@ -36,15 +36,54 @@ Even though it was not directly necessary, understanding how vectors worked also
 https://en.cppreference.com/w/cpp/container/vector <br/>
 https://www.cplusplus.com/reference/vector/vector/vector/ <br/>
 
-Besides, undestanding how [mem_fun_ref](https://www.cplusplus.com/reference/functional/mem_fun_ref/) helps us apply the member function to all the integers in the vector was also really interesting.
+Besides, undestanding how [mem_fun_ref](https://www.cplusplus.com/reference/functional/mem_fun_ref/) helps us apply the member function to all the integers in the vector was also really interesting.<br/>
 
-I thought that maybe we needed to understand vectors to get the bank account number. but I quickly realised that this would not be something to implement in the class cpp file.
-https://www.geeksforgeeks.org/how-to-find-index-of-a-given-element-in-a-vector-in-cpp/
+I thought that maybe we needed to understand vectors to get the bank account number. but I quickly realised that this would not be something to implement in the class cpp file.<br/>
+
+https://www.geeksforgeeks.org/how-to-find-index-of-a-given-element-in-a-vector-in-cpp/<br/>
 
 
 ## C01
 
+### ex00
+1. The the new expression (is equivalent to malloc in C).<br/>
+2. The new function returns a pointer to an object that we can then use outside the function/scope where it was created.<br/>
+3. If we just want a temporary object we can just declare the object and then it will call it's destructor once we leave the scope where it was created.<br/>
 
+In order to free the memory we use the [delete expression](https://docs.microsoft.com/en-us/cpp/cpp/delete-operator-cpp?view=msvc-170)
+
+### ex01
+1.new\[] and delete\[] expressions to declare and delete arrays of objects.
+2. It is not possible to use parametrized contructors on an array craeted with new.
+
+### ex02
+1. Pointers and references of a variable are both valid options that will have the same address and value of a variable.
+
+### ex03
+1. Pointers can be NULL and must be protected.
+2. References can't be NULL and must be initiated using [initialization lists](https://www.cprogramming.com/tutorial/initialization-lists-c++.html).
+3. If objects are const then functions should have const after function `const objc function() const`
+
+### ex04
+1. Working with buffers (redirecting ifstream to stringstring and using the straem string buffer )).<br/>
+https://stackoverflow.com/questions/2602013/read-whole-ascii-file-into-c-stdstring <br/>
+https://www.cplusplus.com/doc/tutorial/files/ <br/>
+https://www.cplusplus.com/reference/sstream/stringstream/ <br/>
+https://www.cplusplus.com/reference/sstream/stringstream/str/ <br/>
+
+2. Checking for errors using [rdstate](https://www.cplusplus.com/reference/ios/ios/rdstate/)
+https://www.cplusplus.com/reference/ios/ios/rdstate/ <br/>
+
+### ex05
+1. Maps are not allowed but they would be great for this exercise. <br/>
+https://en.cppreference.com/w/cpp/container/map <br/>
+https://stackoverflow.com/questions/68652237/use-pointer-to-member-function-to-determine-which-function-to-call <br/>
+https://www.cplusplus.com/reference/map/map/find/ <br/>
+https://www.cplusplus.com/reference/map/map/end/ <br/>
+https://stackoverflow.com/questions/5093090/whats-the-syntax-for-declaring-an-array-of-function-pointers-without-using-a-se <br/>
+
+### ex06
+1. Using [switch statement](https://www.w3schools.com/cpp/cpp_switch.asp)
 
 ## C02
 
