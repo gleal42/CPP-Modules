@@ -1,7 +1,7 @@
 # CPP-Modules
 Introduction to C++
 
-#### C00
+## C00
 
 > Example how code in header file and cpp file should be separated:<br/>
 > https://docs.microsoft.com/en-us/cpp/cpp/header-files-cpp?view=msvc-170
@@ -19,7 +19,32 @@ Introduction to C++
 > http://www.cplusplus.com/reference/ostream/ostream/<br/>
 > http://www.cplusplus.com/reference/ios/ios_base/width/<br/>
 > http://www.cplusplus.com/reference/ios/ios_base/fmtflags/<br/>
-> http://www.cplusplus.com/reference/ios/ios_base/flags/
+> http://www.cplusplus.com/reference/ios/ios_base/flags/ <br/>
+
+### ex02 Job of your dreams 
+
+These were a great introduction to Contructors and Destructors<br/>
+https://www.geeksforgeeks.org/constructors-c/?ref=lbp<br/>
+https://www.ibm.com/docs/en/zos/2.1.0?topic=only-destructors<br/>
+
+
+The main concepts here are static member variables which are shared by all the objects which are great for totals.<br/>
+https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm<br/>
+
+Even though it was not directly necessary, understanding how vectors worked also helped us better understand the exercise <br/>
+
+https://en.cppreference.com/w/cpp/container/vector <br/>
+https://www.cplusplus.com/reference/vector/vector/vector/ <br/>
+
+Besides, undestanding how [mem_fun_ref](https://www.cplusplus.com/reference/functional/mem_fun_ref/) helps us apply the member function to all the integers in the vector was also really interesting.
+
+I thought that maybe we needed to understand vectors to get the bank account number. but I quickly realised that this would not be something to implement in the class cpp file.
+https://www.geeksforgeeks.org/how-to-find-index-of-a-given-element-in-a-vector-in-cpp/
+
+
+## C01
+
+
 
 ## C02
 
