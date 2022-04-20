@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:12:50 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/10 20:22:10 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/20 18:30:51 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 HumanB::HumanB (std::string name)
 {
 	this->name = name;
-	this->weapon = nullptr;
+	this->weapon = 0;
 }
 
 void HumanB::attack(void)
 {
-	if (this->weapon == nullptr)
+	if (this->weapon == 0)
 	{
 		std::cout << this->name << " can't attack because they have no weapons" << std::endl;
 		return ;
