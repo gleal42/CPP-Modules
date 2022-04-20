@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
+#    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/17 22:45:11 by gleal             #+#    #+#              #
-#    Updated: 2022/04/19 01:21:52 by gleal            ###   ########.fr        #
+#    Updated: 2022/04/20 18:56:05 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,19 +34,4 @@ fclean: clean
 	$(RM) $(NAME)
 re: fclean all
 
-valgrind: vbuild vrun
-
-vbuild: | Dockerfile
-	docker build --tag valgrind-image .
-Dockerfile:
-	@echo "FROM ubuntu:latest\n\nRUN apt-get update\nRUN apt-get upgrade -y\nRUN apt-get install make clang gcc valgrind -y\n\nWORKDIR /valgrind" > Dockerfile
-vrun:
-	docker run --tty --interactive --rm --volume `pwd`:/valgrind/ --name valgrind valgrind-image
-vcheck:
-	docker container ls -a
-	docker images
-	docker volume ls
-vclean:
-	docker system prune -a
-
-.PHONY: all clean fclean re valgrind vbuild vrun vcheck vclean
+.PHONY: all clean fclean re

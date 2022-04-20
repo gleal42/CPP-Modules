@@ -5,31 +5,37 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/17 22:45:11 by gleal             #+#    #+#              #
-#    Updated: 2022/04/20 18:55:43 by gleal            ###   ########.fr        #
+#    Created: 2022/04/20 20:56:35 by gleal             #+#    #+#              #
+#    Updated: 2022/04/20 22:25:18 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX=c++
-CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -Wshadow -g
-NAME=animalbrain
-SRCS=Animal.cpp \
-	Dog.cpp \
-	Cat.cpp \
-	Brain.cpp \
-	WrongAnimal.cpp \
-	WrongCat.cpp \
-	main.cpp
-DEPS=Animal.hpp \
-	Dog.hpp \
-	Cat.hpp \
-	Brain.hpp
+CXXFLAGS= -Wall -Wextra -Werror -std=c++98
+NAME=interfacenrecap
+SRC_DIR := srcs
+SRCS := $(SRC_DIR)/AMateria.cpp \
+		$(SRC_DIR)/Character.cpp \
+		$(SRC_DIR)/Cure.cpp \
+		$(SRC_DIR)/Ice.cpp \
+		$(SRC_DIR)/ICharacter.cpp \
+		$(SRC_DIR)/IMateriaSource.cpp \
+		$(SRC_DIR)/main.cpp \
+		$(SRC_DIR)/MateriaSource.cpp
+INC_DIR := include
+INC := $(INC_DIR)/AMateria.hpp \
+		$(INC_DIR)/Character.hpp \
+		$(INC_DIR)/Cure.hpp \
+		$(INC_DIR)/Ice.hpp \
+		$(INC_DIR)/ICharacter.hpp \
+		$(INC_DIR)/IMateriaSource.hpp \
+		$(INC_DIR)/interface.hpp \
+		$(INC_DIR)/MateriaSource.hpp
 all:$(NAME)
-$(NAME): $(SRCS) $(DEPS) Makefile
-	$(CXX) $(CXXFLAGS) $(SRCS) -o $@
+$(NAME): $(SRCS) $(INC) Makefile
+	$(CXX) $(CXXFLAGS) -I $(INC_DIR) $(SRCS) -o $@
 clean:
 	$(RM) -r *.o
-	$(RM) -r $(NAME).dSYM
 fclean: clean
 	$(RM) $(NAME)
 re: fclean all
