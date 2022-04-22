@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:21:24 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/22 14:43:13 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/22 16:53:14 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int main( void )
 
 
 	// Extra tests
-
 	std::cout << std::endl;
 	std::cout << "Extra tests regarding limits" << std::endl;
 	Fixed e(8388608);
@@ -45,8 +44,6 @@ int main( void )
 	std::cout << "h is " << h << std::endl;
 	Fixed i(-8388609);
 	std::cout << "i is " << i << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
 	Fixed j(8388608.0f);
 	std::cout << "j is " << j << std::endl;
 	Fixed k(8388607.0f);
@@ -57,6 +54,5 @@ int main( void )
 	std::cout << "m is " << m << std::endl;
 	Fixed n(-8388609.0f);
 	std::cout << "n is " << n << std::endl;
-	std::cout << std::endl;
 	return 0;
 }

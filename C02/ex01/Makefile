@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
+#    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/08 20:03:02 by gleal             #+#    #+#              #
-#    Updated: 2022/04/12 00:03:06 by gleal            ###   ########.fr        #
+#    Updated: 2022/04/22 16:25:24 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX=c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98
-NAME=mfc
+NAME=tmufnc
 SRCS=main.cpp \
 	Fixed.cpp
 all:$(NAME)
