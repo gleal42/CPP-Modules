@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:27:22 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/20 20:28:19 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/21 14:42:02 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 #include <iostream>
 
-class AMateria;
+#include "AMateria.hpp"
+
 class ICharacter;
 
-class Cure{
+class Cure : public AMateria {
 private:
     
 public:
@@ -28,6 +29,7 @@ public:
     ~Cure();
     AMateria* clone() const;
     void use(ICharacter& target);
+    void setType(std::string const type);
 };
 
 #endif

@@ -3,10 +3,10 @@
 
 #include <iostream>
 
-class AMateria;
-class ICharacter;
+#include "AMateria.hpp"
 
-class Ice{
+class ICharacter;
+class Ice : public AMateria {
 private:
     
 public:
@@ -16,6 +16,7 @@ public:
     ~Ice();
     AMateria* clone() const;
     void use(ICharacter& target);
+    void setType(std::string const type);
 };
 
 #endif
