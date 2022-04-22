@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:21:22 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/12 18:11:23 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/22 14:44:26 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,22 @@ Fixed::~Fixed()
 
 Fixed::Fixed(const int nbr)
 {
+	if (nbr > (INT_MAX >> this->fracbits) || nbr < (INT_MIN >> this->fracbits)) {
+		std::cout << "Integer out of limits" << std::endl;
+		this->fixedpoint = 0;
+		return ;
+	}
 	std::cout << "Int constructor called" << std::endl;
 	this->fixedpoint = nbr << fracbits;
 }
 
 Fixed::Fixed(const float nbr)
 {
+	if ((const int)nbr > (INT_MAX >> this->fracbits) || (const int)nbr < (INT_MIN >> this->fracbits)) {
+		std::cout << "Float out of limits" << std::endl;
+		this->fixedpoint = 0;
+		return ;
+	}
 	std::cout << "Float constructor called" << std::endl;
 	this->fixedpoint = (const int)roundf(nbr * (1 << fracbits));
 }

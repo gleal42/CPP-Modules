@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:21:22 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/15 01:29:29 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/22 14:59:10 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,21 @@ Fixed::~Fixed()
 
 Fixed::Fixed(const int nbr)
 {
+	if (nbr > (INT_MAX >> this->fracbits) || nbr < (INT_MIN >> this->fracbits)) {
+		std::cout << "Integer out of limits" << std::endl;
+		this->fixedpoint = 0;
+		return ;
+	}
 	setRawBits(nbr << fracbits);
 }
 
 Fixed::Fixed(const float nbr)
 {
+	if ((const int)nbr > (INT_MAX >> this->fracbits) || (const int)nbr < (INT_MIN >> this->fracbits)) {
+		std::cout << "Float out of limits" << std::endl;
+		this->fixedpoint = 0;
+		return ;
+	}
 	// std::cout << "default Const w args Fixed " << nbr << std::endl;
 	setRawBits(roundf(nbr * (1 << fracbits)));
 }
@@ -102,6 +112,10 @@ bool Fixed::operator!=(const Fixed &fixed)
 
 Fixed Fixed::operator+(const Fixed &fixed)
 {
+	if (fixedpoint + fixed.fixedpoint > (INT_MAX >> this->fracbits) || fixedpoint + fixed.fixedpoint < (INT_MIN >> this->fracbits)) {
+		std::cout << "Sum value is out of limits" << std::endl;
+		return ;
+	}
 	Fixed temp;
 	temp.setRawBits(fixedpoint + fixed.fixedpoint);
 	return temp;
@@ -109,6 +123,10 @@ Fixed Fixed::operator+(const Fixed &fixed)
 
 Fixed Fixed::operator-(const Fixed &fixed) const
 {
+	if (fixedpoint - fixed.fixedpoint > (INT_MAX >> this->fracbits) || fixedpoint - fixed.fixedpoint < (INT_MIN >> this->fracbits)) {
+		std::cout << "Subtraction value is out of limits" << std::endl;
+		return ;
+	}
 	Fixed temp;
 	temp.setRawBits(fixedpoint - fixed.fixedpoint);
 	return temp;
@@ -116,6 +134,10 @@ Fixed Fixed::operator-(const Fixed &fixed) const
 
 Fixed Fixed::operator-(const Fixed &fixed)
 {
+	if (fixedpoint - fixed.fixedpoint > (INT_MAX >> this->fracbits) || fixedpoint - fixed.fixedpoint < (INT_MIN >> this->fracbits)) {
+		std::cout << "Subtraction value is out of limits" << std::endl;
+		return ;
+	}
 	Fixed temp;
 	temp.setRawBits(fixedpoint - fixed.fixedpoint);
 	return temp;
@@ -123,12 +145,20 @@ Fixed Fixed::operator-(const Fixed &fixed)
 
 Fixed Fixed::operator*(const Fixed &fixed)
 {
+	if ((const int)(this->toFloat() * fixed.toFloat()) > (INT_MAX >> this->fracbits) || (const int)(this->toFloat() * fixed.toFloat()) < (INT_MIN >> this->fracbits)) {
+		std::cout << "Multiplication value is out of limits" << std::endl;
+		return ;
+	}
 	Fixed temp(this->toFloat() * fixed.toFloat());
 	return temp;
 }
 
 Fixed Fixed::operator/(const Fixed &fixed)
 {
+	if ((const int)(this->toFloat() / fixed.toFloat()) > (INT_MAX >> this->fracbits) || (const int)(this->toFloat() / fixed.toFloat()) < (INT_MIN >> this->fracbits)) {
+		std::cout << "Division value is out of limits" << std::endl;
+		return ;
+	}
 	Fixed temp(this->toFloat() / fixed.toFloat());
 	return temp;
 }
