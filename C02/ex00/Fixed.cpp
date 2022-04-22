@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:21:22 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/12 00:22:21 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/22 20:51:28 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ const int Fixed::nbits = 8;
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called" << std::endl;
-	this->fixedpoint = 0;
+	setRawBits(0);
 }
 
 Fixed::Fixed(const Fixed &fixed)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	fixedpoint = fixed.getRawBits();
+	setRawBits(fixed.getRawBits());
 }
 
 Fixed &Fixed::operator= (const Fixed &fixed)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	fixedpoint = fixed.getRawBits();
+	setRawBits(fixed.getRawBits());
 	return *this;
 }
 
