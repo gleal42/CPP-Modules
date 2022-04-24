@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 22:13:41 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/24 02:12:21 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 16:16:52 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int main()
 	momma.takeDamage(20);
 
 	std::cout << std::endl;
-	std::cout << "New tests with Clavtrap Pointer" << std::endl;
+	std::cout << "NEW TESTS WITH CLAVTRAP POINTER" << std::endl;
+	std::cout << std::endl;
 	ClapTrap *test_one = new ScavTrap("test1");
 	ClapTrap *test_two = new ClapTrap("test2");
 	test_one->attack("test2");

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 22:13:41 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/24 02:33:58 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 16:19:03 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ int main()
 	clap.takeDamage(30);
 	clap.attack("Baby");
 	momma.attack("Baby");
-	baby.takeDamage(30);
+	baby.takeDamage(20);
 	baby.highFivesGuys();
 	momma.attack("Baby");
-	baby.takeDamage(30);
+	baby.takeDamage(20);
 	momma.guardGate();
 	momma.attack("Baby");
-	baby.takeDamage(30);
+	baby.takeDamage(20);
 	momma.attack("Baby");
-	baby.takeDamage(30);
+	baby.takeDamage(20);
 	momma.attack("Baby");
-	baby.takeDamage(30);
+	baby.takeDamage(20);
 	momma.attack("Baby");
-	baby.takeDamage(30);
+	baby.takeDamage(20);
 
 	ClapTrap *test1 = new ScavTrap("Test 1");
 	ClapTrap *test2 = new FragTrap("Test 2");

@@ -6,7 +6,7 @@
 #    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 19:36:48 by gleal             #+#    #+#              #
-#    Updated: 2022/04/24 02:01:16 by gleal            ###   ########.fr        #
+#    Updated: 2022/04/24 16:13:10 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ bin:
 	mkdir bin
 $(NAME): $(OBJS) $(INC) Makefile
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OBJS) -o $@
-$(OBJS): $(SRCS) $(INC) Makefile
 bin/%.o: srcs/%.cpp | bin
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $< -c -o $@
 clean:
