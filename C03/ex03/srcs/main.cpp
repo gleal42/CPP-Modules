@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 22:13:41 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/24 16:21:20 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 18:40:12 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ int main()
 	baby = jeff;
 	baby.whoAmI();
 	baby.beRepaired(100);
+
+	std::cout << std::endl;
+
+	ClapTrap *test1 = new DiamondTrap("test1");
+	delete test1;
+
+	std::cout << std::endl;
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 19:18:23 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/24 04:33:30 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 18:40:26 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@ DiamondTrap::DiamondTrap()
 
 DiamondTrap::DiamondTrap(std::string name)
 {
-	ScavTrap tempScav("temp_Scav");
-
+	std::cout << "DiamondTrap " << name << " was created" << std::endl;
 	this->name = name;
 	this->ClapTrap::name = this->name + "_clap_name";
 	setstats();
-	std::cout << "DiamondTrap " << name << " was created" << std::endl;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &diamondtrap)
