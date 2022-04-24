@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:41:57 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/18 00:12:01 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/25 00:26:40 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,13 @@ Animal::Animal()
 
 Animal &Animal::operator=(const Animal &animal)
 {
-	type = animal.type;
+	if (getType() == animal.getType()) {
+		std::cout << "Animal Copy Constructor" << std::endl;
+		type = animal.type;
+	}
+	else {
+		std::cout << "Cannot convert an animal to another" << std::endl;
+	}
 	return *this;
 }
 
