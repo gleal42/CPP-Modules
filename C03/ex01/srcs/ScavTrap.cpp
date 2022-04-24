@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:20:58 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/17 15:01:43 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 03:06:59 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 ScavTrap::ScavTrap()
 {
 	std::cout << "ScavTrap Default constructor was called" << std::endl;
+	this->hitpoints = 100;
+	this->energy = 50;
+	this->attackdamage = 20;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "ScavTrap " << name << " was created" << std::endl;
+	this->hitpoints = 100;
+	this->energy = 50;
+	this->attackdamage = 20;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &claptrap)
@@ -31,7 +37,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &claptrap)
 	this->attackdamage = claptrap.attackdamage;
 	return *this;
 }
-
+ 
 ScavTrap::ScavTrap(const ScavTrap &scavtrap)
 {
 	std::cout << "ScavTrap " << name << " is now a copy of " << scavtrap.name << std::endl;
@@ -40,7 +46,7 @@ ScavTrap::ScavTrap(const ScavTrap &scavtrap)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap Default destructor was called for " << name << std::endl;
+	std::cout << "ScavTrap " << name << " was destroyed" << std::endl;
 }
 
 void ScavTrap::guardGate()

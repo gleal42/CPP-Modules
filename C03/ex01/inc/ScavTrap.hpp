@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:05:36 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/17 02:13:25 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 01:31:16 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class ScavTrap: public ClapTrap {
 private:
-	
+
 public:
 	ScavTrap();
 	ScavTrap(std::string name);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:20:58 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/17 15:01:43 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 04:01:45 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,22 @@
 ScavTrap::ScavTrap()
 {
 	std::cout << "ScavTrap Default constructor was called" << std::endl;
+	setstats();
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "ScavTrap " << name << " was created" << std::endl;
+	setstats();
 }
 
-ScavTrap &ScavTrap::operator=(const ScavTrap &claptrap)
+ScavTrap &ScavTrap::operator=(const ScavTrap &scavtrap)
 {
 	std::cout << "ScavTrap assignment overload was called" << std::endl;
-	this->name = claptrap.name;
-	this->hitpoints = claptrap.hitpoints;
-	this->energy = claptrap.energy;
-	this->attackdamage = claptrap.attackdamage;
+	this->name = scavtrap.name;
+	this->hitpoints = scavtrap.hitpoints;
+	this->energy = scavtrap.energy;
+	this->attackdamage = scavtrap.attackdamage;
 	return *this;
 }
 
@@ -59,4 +61,11 @@ void ScavTrap::attack(const std::string& target)
 	}
 	std::cout << "ScavTrap " << name << " attacks " << target << ", causing " << attackdamage << " points of damage!" << std::endl;
 	energy--;
+}
+
+void ScavTrap::setstats()
+{
+	this->hitpoints = 100;
+	this->energy = 50;
+	this->attackdamage = 20;
 }

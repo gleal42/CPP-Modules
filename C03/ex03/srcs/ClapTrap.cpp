@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 22:13:56 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/17 02:40:36 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 03:57:30 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,14 @@ ClapTrap::ClapTrap()
 {
 	std::cout << "ClapTrap Default constructor was called" << std::endl;
 	this->name = "jeff";
-	this->hitpoints = 100;
-	this->energy = 50;
-	this->attackdamage = 20;
+	setstats();
 }
 
 ClapTrap::ClapTrap(std::string name)
 {
 	std::cout << "ClapTrap " << name << " was created" << std::endl;
 	this->name = name;
-	this->hitpoints = 100;
-	this->energy = 50;
-	this->attackdamage = 20;
+	setstats();
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &claptrap)
@@ -48,7 +44,7 @@ ClapTrap::ClapTrap(const ClapTrap &claptrap)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap Default destructor was called" << std::endl;
+	std::cout << "ClapTrap Default destructor was called for " << name <<  std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -100,4 +96,11 @@ void ClapTrap::beRepaired(unsigned int amount)
 	std::cout << "ClapTrap " << name << " repaired itself, getting " << amount << " hitpoints back! (Now has "
 	<< hitpoints << " hitpoints)!" << std::endl;
 	energy--;
+}
+
+void ClapTrap::setstats()
+{
+	this->hitpoints = 10;
+	this->energy = 10;
+	this->attackdamage = 0;
 }

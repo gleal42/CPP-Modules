@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 14:39:40 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/17 21:26:51 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 04:00:59 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 FragTrap::FragTrap()
 {
 	std::cout << "FragTrap Default constructor was called" << std::endl;
+	setstats();
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "FragTrap " << name << " was created" << std::endl;
+	setstats();
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &fragtrap)
@@ -59,4 +61,11 @@ void FragTrap::attack(const std::string& target)
 	}
 	std::cout << "FragTrap " << name << " attacks " << target << ", causing " << attackdamage << " points of damage!" << std::endl;
 	energy--;
+}
+
+void FragTrap::setstats()
+{
+	this->hitpoints = 100;
+	this->energy = 100;
+	this->attackdamage = 30;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 14:38:33 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/17 14:57:01 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 03:58:16 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ScavTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
 private:
 	
 public:
@@ -23,10 +23,10 @@ public:
 	FragTrap(std::string name);
 	FragTrap &operator=(const FragTrap &fragtrap);
 	FragTrap(const FragTrap &fragtrap);
-	~FragTrap();
+	virtual ~FragTrap();
 	void highFivesGuys(void);
-	void attack(const std::string& target);
+	virtual void attack(const std::string& target);
+	virtual void setstats();
 };
 
 #endif
-

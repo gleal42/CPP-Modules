@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 19:18:23 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/17 22:13:49 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 04:33:30 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 DiamondTrap::DiamondTrap()
 {
+	std::cout << "DiamondTrap Default constructor was called" << std::endl;
 	this->name = "jeff";
 	ClapTrap::name = this->name + "_clap_name";
-	std::cout << "DiamondTrap Default constructor was called" << std::endl;
+	setstats();
 }
 
 DiamondTrap::DiamondTrap(std::string name)
-: ClapTrap(name + "_clap_name"), FragTrap(name + "_clap_name"), ScavTrap(name + "_clap_name")
 {
+	ScavTrap tempScav("temp_Scav");
+
 	this->name = name;
+	this->ClapTrap::name = this->name + "_clap_name";
+	setstats();
 	std::cout << "DiamondTrap " << name << " was created" << std::endl;
 }
 
@@ -59,4 +63,19 @@ void DiamondTrap::whoAmI()
 	<< " and my ClapTrap name is " 
 	<< ClapTrap::name 
 	<< std::endl;
+}
+
+/* 
+	The attributes are shared among all inherited classes so I can't just call 
+	FragTrap::hitpoints ScavTrap::energy... because they all refer to the same variables.
+	ScavTrap is the last constructor to be called so the "Energy" attribute value is the
+	only with the correct value so we save it so we can use it afterwards
+*/
+
+void DiamondTrap::setstats()
+{
+	int temp_energy = this->energy;
+	this->FragTrap::setstats();
+	this->energy = temp_energy;
+	
 }

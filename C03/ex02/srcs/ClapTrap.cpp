@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 22:13:56 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/16 23:37:16 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 02:22:57 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "Default constructor was called" << std::endl;
+	std::cout << "ClapTrap Default constructor was called" << std::endl;
 	this->name = "jeff";
 	this->hitpoints = 10;
 	this->energy = 10;
@@ -32,6 +32,7 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &claptrap)
 {
+	std::cout << "ClavTrap assignment overload was called" << std::endl;
 	this->name = claptrap.name;
 	this->hitpoints = claptrap.hitpoints;
 	this->energy = claptrap.energy;
@@ -41,12 +42,13 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &claptrap)
 
 ClapTrap::ClapTrap(const ClapTrap &claptrap)
 {
+	std::cout << "ClapTrap " << name << " is now a copy of " << claptrap.name << std::endl;
 	*this = claptrap;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Default destructor was called" << std::endl;
+	std::cout << "ClapTrap Default destructor was called for " << name <<  std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -83,6 +85,12 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (hitpoints == 0){
 		std::cout << "ClapTrap " << name << " has died already so they can't repair!" << std::endl;
+		return ;
+	} else if (hitpoints + amount >= 100) {
+		std::cout << "ClapTrap " << name << " repairs and has max health!" << std::endl;
+		if (hitpoints < 100) {
+			hitpoints = 100;
+		}
 		return ;
 	} else if (energy == 0){
 		std::cout << "ClapTrap " << name << " doesn't have any energy left so they can't repair!" << std::endl;

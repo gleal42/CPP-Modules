@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:20:58 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/17 02:42:00 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 02:16:34 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,26 @@
 ScavTrap::ScavTrap()
 {
 	std::cout << "ScavTrap Default constructor was called" << std::endl;
+	this->hitpoints = 100;
+	this->energy = 50;
+	this->attackdamage = 20;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "ScavTrap " << name << " was created" << std::endl;
+	this->hitpoints = 100;
+	this->energy = 50;
+	this->attackdamage = 20;
 }
 
-ScavTrap &ScavTrap::operator=(const ScavTrap &claptrap)
+ScavTrap &ScavTrap::operator=(const ScavTrap &scavtrap)
 {
 	std::cout << "ScavTrap assignment overload was called" << std::endl;
-	this->name = claptrap.name;
-	this->hitpoints = claptrap.hitpoints;
-	this->energy = claptrap.energy;
-	this->attackdamage = claptrap.attackdamage;
+	this->name = scavtrap.name;
+	this->hitpoints = scavtrap.hitpoints;
+	this->energy = scavtrap.energy;
+	this->attackdamage = scavtrap.attackdamage;
 	return *this;
 }
 
@@ -40,7 +46,7 @@ ScavTrap::ScavTrap(const ScavTrap &scavtrap)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap Default destructor was called" << std::endl;
+	std::cout << "ScavTrap Default destructor was called for " << name << std::endl;
 }
 
 void ScavTrap::guardGate()

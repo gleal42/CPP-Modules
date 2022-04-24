@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 22:13:56 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/17 15:00:59 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 02:02:02 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ ClapTrap::ClapTrap()
 {
 	std::cout << "ClapTrap Default constructor was called" << std::endl;
 	this->name = "jeff";
-	this->hitpoints = 100;
-	this->energy = 100;
-	this->attackdamage = 30;
+	this->hitpoints = 10;
+	this->energy = 10;
+	this->attackdamage = 0;
 }
 
 ClapTrap::ClapTrap(std::string name)
 {
 	std::cout << "ClapTrap " << name << " was created" << std::endl;
 	this->name = name;
-	this->hitpoints = 100;
-	this->energy = 100;
-	this->attackdamage = 30;
+	this->hitpoints = 10;
+	this->energy = 10;
+	this->attackdamage = 0;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &claptrap)
@@ -48,7 +48,7 @@ ClapTrap::ClapTrap(const ClapTrap &claptrap)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap Default destructor was called for " << name <<  std::endl;
+	std::cout << "ClapTrap " << this->name << " was destroyed " << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)

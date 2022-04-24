@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:05:36 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/17 22:01:06 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/24 04:04:52 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ public:
 	ScavTrap(std::string name);
 	ScavTrap(const ScavTrap &scavtrap);
 	ScavTrap &operator=(const ScavTrap &scavtrap);
-	~ScavTrap();
+	virtual ~ScavTrap();
 	void guardGate();
 	virtual void attack(const std::string& target);
+	virtual void setstats();
 };
 
 #endif
