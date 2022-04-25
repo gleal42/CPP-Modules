@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/17 22:45:11 by gleal             #+#    #+#              #
-#    Updated: 2022/04/24 22:46:56 by gleal            ###   ########.fr        #
+#    Created: 2022/04/25 18:35:13 by gleal             #+#    #+#              #
+#    Updated: 2022/04/25 20:26:06 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,35 +14,46 @@ CXX := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98
 CPPFLAGS = -Iinc
 NAME := polymorphism
-SRCS := Animal.cpp \
-	Dog.cpp \
-	Cat.cpp \
-	WrongAnimal.cpp \
-	WrongCat.cpp \
-	main.cpp
-INC := Animal.hpp \
-	Dog.hpp \
-	Cat.hpp
+SRCDIR := srcs/
+OBJDIR := bin/
+DEPDIR := deps/
+SRCS :=	Animal.cpp \
+		Dog.cpp \
+		Cat.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp \
+		main.cpp
 OBJS := $(SRCS:.cpp=.o)
-SRCS := $(addprefix srcs/, $(SRCS))
-OBJS := $(addprefix bin/, $(OBJS))
-INC := $(addprefix inc/, $(INC))
+DEPS := $(SRCS:.cpp=.d)
+SRCS := $(addprefix $(SRCDIR), $(SRCS))
+OBJS := $(addprefix $(OBJDIR), $(OBJS))
+DEPS := $(addprefix $(DEPDIR), $(DEPS))
+DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
+
 all: $(NAME)
-bin:
-	mkdir bin
-$(NAME): $(OBJS) $(INC) Makefile
+
+$(DEPDIR): ; mkdir -p $@
+$(OBJDIR): ; mkdir -p $@
+
+$(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OBJS) -o $@
-bin/%.o: srcs/%.cpp | bin
-	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $< -c -o $@
+
+bin/%.o : srcs/%.cpp deps/%.d | $(OBJDIR) $(DEPDIR)
+	$(CXX) $(DEPFLAGS) $(CXXFLAGS) $(CPPFLAGS) -c -o $@ $<
+
+$(DEPS):
+-include $(DEPS)
+
 clean:
-	$(RM) bin/*.o
+	$(RM) $(OBJS)
+	$(RM) $(DEPS)
+
 fclean: clean
 	$(RM) $(NAME)
+
+resetclean: fclean clean
+	$(RM) -r $(OBJDIR) $(DEPDIR)
+
 re: fclean all
 
-.PHONY: all clean fclean re depend
-
-depend: $(SRCS)
-	makedepend $(CPPFLAGS) $^
-
-# DO NOT DELETE THIS LINE -- make depend needs it
+.PHONY: all clean fclean resetclean re
