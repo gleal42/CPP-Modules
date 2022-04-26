@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 00:06:16 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/18 00:24:01 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/25 23:53:51 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,13 @@ WrongAnimal::WrongAnimal()
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &wronganimal)
 {
-	type = wronganimal.type;
+	if (getType() == wronganimal.getType()) {
+		std::cout << "Wrong Animal Copy Constructor" << std::endl;
+		type = wronganimal.type;
+	}
+	else {
+		std::cout << "Cannot convert a Wrong Animal to another" << std::endl;
+	}
 	return *this;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:52:39 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/19 00:55:00 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 02:11:47 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ private:
 	Brain* brain;
 public:
 	Cat();
+	Animal &operator=(const Animal &animal);
 	Cat &operator=(const Cat &cat);
 	Cat(const Cat &cat);
 	virtual ~Cat();

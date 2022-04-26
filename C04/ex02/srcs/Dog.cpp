@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:56:05 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/18 23:17:20 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 02:40:56 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,18 @@ Dog::Dog()
 	std::cout << "Dog Default Constructor" << std::endl;
 	type = "Dog";
 	brain = new Brain;
+}
+
+Animal &Dog::operator=(const Animal &animal)
+{
+	if (type == animal.getType())
+	{
+		std::cout << "Dog with Animal Pointer Copy Constructor" << std::endl;
+		*brain = *(dynamic_cast<const Dog &>(animal).brain);
+	} else {
+		std::cout << "Cannot convert an animal to another" << std::endl;	
+	}
+	return *this;
 }
 
 Dog &Dog::operator=(const Dog &dog)
@@ -48,6 +60,7 @@ void Dog::print_ideas() const
 {
 	int i;
 	i = 0;
+	std::cout << "Dog's Ideas: " << std::endl;
 	while (!brain->get_idea(i).empty() && i < 100)
 	{
 		std::cout << "Idea number " << i+1 << " " << brain->get_idea(i) << std::endl;

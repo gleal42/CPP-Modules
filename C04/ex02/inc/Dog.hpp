@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:55:50 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/19 00:55:13 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 02:03:15 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ private:
 	Brain* brain;
 public:
 	Dog();
+	Animal &operator=(const Animal &animal);
 	Dog &operator=(const Dog &dog);
 	Dog(const Dog &dog);
 	virtual ~Dog();

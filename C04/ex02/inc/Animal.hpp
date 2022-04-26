@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:42:00 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/19 01:19:26 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 03:17:25 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ protected:
 	std::string type;
 public:
 	Animal();
-	Animal &operator=(const Animal &animal);
+	virtual Animal &operator=(const Animal &animal);
 	Animal(const Animal &animal);
 	virtual ~Animal();
 	virtual void makeSound() const = 0;

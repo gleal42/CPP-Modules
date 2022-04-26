@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:55:30 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/18 23:17:34 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 02:13:16 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,18 @@ Cat::Cat()
 	std::cout << "Cat Default Constructor" << std::endl;
 	type = "Cat";
 	brain = new Brain;
+}
+
+Animal &Cat::operator=(const Animal &animal)
+{
+	if (type == animal.getType())
+	{
+		std::cout << "Cat with Animal Pointer Copy Constructor" << std::endl;
+		*brain = *(dynamic_cast<const Cat &>(animal).brain);
+	} else {
+		std::cout << "Cannot convert an animal to another" << std::endl;	
+	}
+	return *this;
 }
 
 Cat &Cat::operator=(const Cat &cat)
