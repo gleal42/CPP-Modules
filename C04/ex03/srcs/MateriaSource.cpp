@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 14:05:53 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/22 02:54:49 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 16:58:32 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &materiasource)
     {
         if (this->materias[i] != 0){
             delete this->materias[i];
+            this->materias[i] = 0;
         }
         if (materiasource.materias[i] != 0) {
             this->materias[i] = materiasource.materias[i]->clone();
@@ -44,6 +45,7 @@ MateriaSource::~MateriaSource()
 {
     for (size_t i = 0; i < 4; i++) {
             delete this->materias[i];
+            this->materias[i] = 0;
         }
     // std::cout << "MateriaSource Default Destructor" << std::endl;
 }

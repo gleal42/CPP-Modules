@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:53:04 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/22 02:51:40 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 17:04:31 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ Character &Character::operator=(const Character &character)
     {
         if (this->materias[i] != 0){
             delete this->materias[i];
+            this->materias[i] = 0;
         }
         if (character.materias[i] != 0) {
             this->materias[i] = character.materias[i]->clone();
@@ -55,6 +56,7 @@ Character::~Character()
     {
         if (this->materias[i] != 0){
             delete this->materias[i];
+            this->materias[i] = 0;
         }
     }
     // std::cout << "Character Default Destructor" << std::endl;

@@ -6,7 +6,7 @@
 #    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/20 20:56:35 by gleal             #+#    #+#              #
-#    Updated: 2022/04/25 20:37:39 by gleal            ###   ########.fr        #
+#    Updated: 2022/04/26 17:18:55 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,10 @@ $(OBJDIR): ; mkdir -p $@
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OBJS) -o $@
 
-bin/%.o : srcs/%.cpp deps/%.d | $(OBJDIR) $(DEPDIR)
+bin/%.o : srcs/%.cpp deps/%.d Makefile | $(OBJDIR) $(DEPDIR)
 	$(CXX) $(DEPFLAGS) $(CXXFLAGS) $(CPPFLAGS) -c -o $@ $<
 
-$(DEPS):
+$(DEPS): Makefile
 -include $(DEPS)
 
 clean:

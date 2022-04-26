@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:23:24 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/21 23:36:39 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 16:56:56 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@ Ice::Ice()
     this->setType("ice");
 }
 
+// This does nothing but it requires implementation
+
 Ice &Ice::operator=(const Ice &ice)
 {
-    (void)ice;
+    if (this != &ice) {
+        setType(ice.type);
+    }
     return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:27:13 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/22 02:42:06 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 16:56:27 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@ Cure::Cure()
     // std::cout << "Cure Default Constructor" << std::endl;
 }
 
+// This does nothing but it requires implementation
+
 Cure &Cure::operator=(const Cure &cure)
 {
-    (void)cure;
+    if (this != &cure) {
+        setType(cure.type);
+    }
     return *this;
 }
 
