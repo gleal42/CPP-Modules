@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:52:00 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/26 03:01:20 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 16:36:49 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ void test_cats(Animal** &animal_list)
 	std::cout << std::endl;
 }
 
-void	test_deep_copy_pdf()
+void	test_deep_copy_pdf_dogs()
 {
 	std::cout << std::endl;
-	std::cout << "Testing how the different assignments and copies are deep" << std::endl;
+	std::cout << "Testing how the different assignments and copies are deep for DOGS" << std::endl;
 	Dog basic;
 	std::cout << "basic" << std::endl;
 	basic.new_idea("BAAAAAAAAAAALS");
@@ -111,6 +111,34 @@ void	test_deep_copy_pdf()
 		Dog tmp2(basic);
 		tmp2.print_ideas();
 		Dog tmp3;
+		std::cout << "Temp3 before" << std::endl;
+		tmp3.print_ideas();
+		tmp3 = tmp;
+		std::cout << "Temp3 after" << std::endl;
+		tmp3.print_ideas();
+	}
+	std::cout << "basic" << std::endl;
+	basic.print_ideas();
+}
+
+void	test_deep_copy_pdf_cats()
+{
+	std::cout << std::endl;
+	std::cout << "Testing how the different assignments and copies are deep for CATS" << std::endl;
+	Cat basic;
+	std::cout << "basic" << std::endl;
+	basic.new_idea("MIIIIIICE");
+	basic.print_ideas();
+	{
+		Cat tmp = basic;
+		std::cout << "Temp" << std::endl;
+		tmp.print_ideas();
+		tmp.new_idea("I will suicide in a minute");
+		tmp.print_ideas();
+		std::cout << "Temp2" << std::endl;
+		Cat tmp2(basic);
+		tmp2.print_ideas();
+		Cat tmp3;
 		std::cout << "Temp3 before" << std::endl;
 		tmp3.print_ideas();
 		tmp3 = tmp;
@@ -180,7 +208,8 @@ int main()
 	}
 	test_dogs(animal_list);
 	test_cats(animal_list);
-	test_deep_copy_pdf();
+	test_deep_copy_pdf_dogs();
+	test_deep_copy_pdf_cats();
 	test_complex_assignments(animal_list);
 	for(size_t k = 0; k < 6; k++) {
 		delete animal_list[k];
