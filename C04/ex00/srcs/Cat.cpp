@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:55:30 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/18 01:17:26 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/25 22:41:49 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ Cat::Cat(const Cat &cat)
 	*this = cat;
 }
 
-void Cat::makeSound() const
-{
-	std::cout << "Miau" << std::endl;
-}
-
 Cat::~Cat()
 {
 	std::cout << "Cat Default Destructor" << std::endl;
+}
+
+void Cat::makeSound() const
+{
+	std::cout << "Miau" << std::endl;
 }

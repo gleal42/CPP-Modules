@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:52:00 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/25 00:25:13 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/25 23:35:52 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void assignment_tests()
 	Animal* tom2 = new Cat();
 	Animal* rand1 = new Animal();
 
+	std::cout << std::endl;
 	*bobi1 = *tom1;
 	*bobi1 = *bobi2;
 	*tom1 = *tom2;
@@ -65,7 +66,22 @@ void assignment_tests()
 	std::cout << "tom1 is " << tom1->getType() << std::endl;
 
 	delete bobi1;
+	delete bobi2;
 	delete tom1;
+	delete tom2;
+	delete rand1;
+	
+	Cat Kitten_a;
+	Cat Kitten_b;
+
+	Kitten_a = Kitten_b;	
+
+	Dog Doge_a;
+	Dog Doge_b;
+
+	Doge_a = Doge_b;
+
+	// Doge_a = Kitten_a;
 }
 
 int main()
