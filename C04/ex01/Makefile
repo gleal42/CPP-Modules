@@ -6,12 +6,12 @@
 #    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/17 22:45:11 by gleal             #+#    #+#              #
-#    Updated: 2022/04/25 20:31:53 by gleal            ###   ########.fr        #
+#    Updated: 2022/04/26 00:22:13 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX := c++
-CXXFLAGS := -Wall -Wextra -Werror -std=c++98
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 CPPFLAGS := -Iinc
 NAME := animalbrain
 SRCDIR := srcs/
