@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:41:57 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/26 02:22:44 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 03:24:46 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,4 @@ Animal::~Animal()
 std::string Animal::getType() const
 {
 	return type;
-}
-
-void Animal::makeSound() const
-{
-	std::cout << "General Animal Sound" << std::endl;
 }

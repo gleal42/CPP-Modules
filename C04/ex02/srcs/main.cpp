@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 22:52:00 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/19 01:28:46 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/26 03:24:23 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int main()
 	delete j;//should not create a leak
 	delete i;
 
-	// Tests from previous exercise + examples of instantiation that will not compile
+	// Some tests from previous exercise + examples of instantiation that will not compile
 	const Animal** animal_list = new const Animal*[4];
 	for (size_t k = 0; k < 4; k++) {
 		std::cout << std::endl;
