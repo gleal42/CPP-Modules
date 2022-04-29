@@ -47,12 +47,12 @@ Bureaucrat::~Bureaucrat()
     std::cout << "Bureaucrat " << getName() << ", with grade " << getGrade() << ", was destroyed" << std::endl;
 }
 
-int &Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
     return (grade);
 }
 
-const std::string &Bureaucrat::getName()
+const std::string &Bureaucrat::getName() const
 {
     return (name);
 }
@@ -81,6 +81,22 @@ void    Bureaucrat::decrement_grade()
         throw GradeTooLowException();
     }
     this->grade++;
+}
+
+void Bureaucrat::signForm(Form &form)
+{
+    if (form.getIsSigned()) {
+        std::cout << "Form " << form.getName() << " has been signed already." <<  std::endl;
+        return ;
+    }
+    try
+    {
+        form.beSigned(*this);
+        std::cout << this->getName() << " signed " << form.getName() <<  std::endl;
+    }
+    catch (std::exception &e){
+        std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << e.what() <<  std::endl;
+    }
 }
 
 std::ostream &operator<<(std::ostream &output, Bureaucrat &bct)
