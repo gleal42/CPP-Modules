@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 00:32:47 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/28 03:13:39 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/29 03:46:35 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,5 +150,4 @@ int main()
     testing_constructor_throws();
     testing_increment_throws();
     testing_decrement_throws();
-    std::cout << "yyyyyyyyo" << std::endl;
 }
