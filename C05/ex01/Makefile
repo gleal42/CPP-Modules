@@ -6,14 +6,14 @@
 #    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/27 00:33:42 by gleal             #+#    #+#              #
-#    Updated: 2022/04/28 03:55:27 by gleal            ###   ########.fr        #
+#    Updated: 2022/04/29 04:15:05 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 CPPFLAGS := -Iinc
-NAME := bureaucrat
+NAME := form
 SRCDIR := srcs/
 OBJDIR := bin/
 DEPDIR := deps/
