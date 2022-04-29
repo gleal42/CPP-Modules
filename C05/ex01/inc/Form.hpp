@@ -6,13 +6,16 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 03:38:16 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/28 03:58:51 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/29 01:02:39 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FORM_HPP
+# define FORM_HPP
+
 #include <iostream>
 
-class Bureaucrat;
+# include "Bureaucrat.hpp"
 
 class Form{
 private:
@@ -26,7 +29,13 @@ public:
     Form(const Form &form);
     ~Form();
     Form &operator=(const Form &form);
+    const std::string &getName() const;
+    const int    &getSignGrade() const;
+    const int    &getExecGrade() const;
+    const bool    &getIsSigned() const;
     void beSigned(const Bureaucrat& bct);
 };
 
-std::ostream &operator<<(std::ostream &output, Form form);
+std::ostream &operator<<(std::ostream &output, Form &form);
+
+#endif
