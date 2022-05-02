@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 22:00:52 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/28 20:32:53 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/02 16:59:32 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ public:
             virtual const char* what() const throw();
     };
     void signForm(Form &form);
+    void executeForm(Form const & form);
 };
 
 #include "Form.hpp"

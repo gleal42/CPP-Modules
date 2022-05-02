@@ -6,12 +6,12 @@
 #    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/27 00:33:42 by gleal             #+#    #+#              #
-#    Updated: 2022/04/30 02:18:53 by gleal            ###   ########.fr        #
+#    Updated: 2022/05/03 00:40:18 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX := c++
-CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g
 CPPFLAGS := -Iinc
 NAME := execute
 SRCDIR := srcs/

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 03:38:19 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/30 03:58:56 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/02 16:53:51 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,15 @@ std::ostream &operator<<(std::ostream &output, Form &form)
 
 const char* Form::NotSignedException::what() const throw()
 {
-    // saddsadasds
+    return ("Form has not been signed yet");
+}
+
+void Form::execute(Bureaucrat const & executor) const
+{
+    if (!getIsSigned()) {
+        throw NotSignedException();
+    } else if (executor.getGrade() > getExecGrade()) {
+        throw Bureaucrat::GradeTooLowException() ;
+    }
+    action();
 }

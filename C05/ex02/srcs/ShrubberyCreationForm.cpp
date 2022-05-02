@@ -1,14 +1,21 @@
 # include "ShrubberyCreationForm.hpp" 
 
 ShrubberyCreationForm::ShrubberyCreationForm()
+: Form("ShrubberyCreationForm", 145, 137) , target("Random")
 {
-    std::cout << "ShrubberyCreationForm Default Constructor" << std::endl;
+    std::cout << getName() << " which targets " << target << " was created" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &shrubberycreationform)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target)
+: Form("ShrubberyCreationForm", 145, 137) , target(target)
 {
-    std::cout << "ShrubberyCreationForm Copy Constructor" << std::endl;
-    *this = shrubberycreationform;
+    std::cout << getName() << " which targets " << target << " was created" << std::endl;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &shrub)
+: Form(shrub.getName(), shrub.getSignGrade(), shrub.getExecGrade()) , target(shrub.target)
+{
+    std::cout << "ShrubberyCreationForm:" << *this << "was copied" << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
@@ -24,19 +31,16 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return *this;
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void ShrubberyCreationForm::action() const
 {
-    if (!getIsSigned() || executor.getGrade() > getExecGrade())
-        return ;
-
     std::ofstream asciitree;
     std::string name;
-    name = executor.getName()+"_shrubbery";
+
+    name = target + "_shrubbery";
     asciitree.open(name);
     if ( (asciitree.rdstate() & std::ifstream::failbit ) != 0 
         || (asciitree.rdstate() & std::ifstream::badbit) != 0 )
-        std::cerr << "Error opening " << executor.getName()+"_shrubbery" << std::endl;
-    
+        std::cerr << "Error opening " << target + "_shrubbery" << std::endl;
     asciitree
     << "            {/{/{\\{/\\{(/}{\\(/} " << std::endl
     << "          {/{/{\\\\{\\(/}{\\(/}{\\(/} " << std::endl

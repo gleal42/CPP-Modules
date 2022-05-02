@@ -6,29 +6,28 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 03:41:44 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/30 04:00:49 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/03 00:44:28 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "RobotomyRequestForm.hpp" 
 
 RobotomyRequestForm::RobotomyRequestForm()
-: Form("RobotomyRequestForm", 145, 137) , target("Random")
+: Form("RobotomyRequestForm", 72, 45) , target("Random")
 {
-    std::cout << "RobotomyRequestForm which targets " << target << " was created" << std::endl;
+    std::cout << getName() << " which targets " << target << " was created" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target)
-: Form("RobotomyRequestForm", 145, 137) , target(target)
+: Form("RobotomyRequestForm", 72, 45) , target(target)
 {
-    std::cout << "RobotomyRequestForm which targets " << target << " was created" << std::endl;
+    std::cout << getName() << " which targets " << target << " was created" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &robotreqform)
-: Form(robotreqform.getName() , robotreqform.getIsSigned(), robotreqform.getExecGrade()), target(robotreqform.target)
+: Form(robotreqform.getName() , robotreqform.getSignGrade(), robotreqform.getExecGrade()), target(robotreqform.target)
 {
-    std::cout << "RobotomyRequestForm Copy Constructor" << std::endl;
-    *this = robotreqform;
+    std::cout << "RobotomyRequestForm:" << *this << "was copied" << std::endl;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
@@ -44,13 +43,8 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &r
     return *this;
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+void RobotomyRequestForm::action() const
 {
-    // Fazer funcoes Action na Base Class que vai ser a unica coisa que vai mudar.
-    // A Funcao executa vai estar só na base class
-
-    if (!getIsSigned() || executor.getGrade() > getExecGrade())
-        return ;
     srand(time(NULL));
     if (rand() % 2) {
         std::cout << "Attention: " << target << " has been robotomized" << std::endl;

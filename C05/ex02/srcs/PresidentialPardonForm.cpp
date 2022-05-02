@@ -6,26 +6,28 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 02:10:34 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/30 03:42:46 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/03 00:46:54 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "PresidentialPardonForm.hpp" 
 
-PresidentialPardonForm::PresidentialPardonForm() : Form("Random", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm()
+: Form("PresidentialPardonForm", 25, 5), target("Random")
 {
-    std::cout << "PresidentialPardonForm " << getName() << " was created" << std::endl;
+    std::cout << getName() << " which targets " << target << " was created" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string nm, const int minsign, const int minexec) : Form(nm, minsign, minexec)
+PresidentialPardonForm::PresidentialPardonForm(const std::string target)
+: Form("PresidentialPardonForm", 25, 5), target(target)
 {
-    std::cout << "PresidentialPardonForm " << getName() << " was created" << std::endl;
+    std::cout << getName() << " which targets " << target << " was created" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &presidentialpardonform)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &pres)
+: Form(pres.getName() , pres.getSignGrade(), pres.getExecGrade()), target(pres.target)
 {
-    std::cout << "PresidentialPardonForm Copy Constructor" << std::endl;
-    *this = presidentialpardonform;
+    std::cout << "PresidentialPardonForm:" << *this << "was copied" << std::endl;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
@@ -41,9 +43,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
     return *this;
 }
 
-void PresidentialPardonForm::execute(Bureaucrat const & executor) const
+void PresidentialPardonForm::action() const
 {
-    if (!getIsSigned() || executor.getGrade() > getExecGrade())
-        return ;
-    std::cout << "Infornation: " << executor.getName() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+    std::cout << "Infornation: " << this->target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

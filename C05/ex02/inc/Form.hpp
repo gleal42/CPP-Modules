@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 03:38:16 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/30 03:25:29 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/02 16:11:37 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ private:
     bool is_signed;
     const int min_grade_sign;
     const int min_grade_exec;
+protected:
+    virtual void action() const = 0;
 public:
     /* ---------------------------------- ex01 ---------------------------------- */
     Form();
@@ -36,7 +38,7 @@ public:
     const bool    &getIsSigned() const;
     void beSigned(const Bureaucrat& bct);
     /* ---------------------------------- ex02 ---------------------------------- */
-    virtual void execute(Bureaucrat const & executor) const = 0;
+    void execute(Bureaucrat const & executor) const;
     class NotSignedException : public std::exception {
         private:
             virtual const char* what() const throw();
