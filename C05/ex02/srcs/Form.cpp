@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 03:38:19 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/29 01:07:57 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/30 03:58:56 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,9 @@ std::ostream &operator<<(std::ostream &output, Form &form)
     output << "Form Minimum Exec Grade: " << form.getExecGrade() << std::endl;
     output << "The Form has " << (form.getIsSigned() ?  "been signed already" : "not been signed yet") << std::endl;
     return output;
+}
+
+const char* Form::NotSignedException::what() const throw()
+{
+    // saddsadasds
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 04:08:11 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/29 04:09:48 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/30 03:53:07 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 
 class RobotomyRequestForm : public Form {
 private:
-    
+   const std::string target; 
 public:
     RobotomyRequestForm();
+    RobotomyRequestForm(const std::string target)
     RobotomyRequestForm(const RobotomyRequestForm &robotomyrequestform);
     ~RobotomyRequestForm();
     RobotomyRequestForm &operator=(const RobotomyRequestForm &robotomyrequestform);

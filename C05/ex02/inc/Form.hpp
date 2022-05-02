@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 03:38:16 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/29 04:02:28 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/30 03:25:29 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ public:
     void beSigned(const Bureaucrat& bct);
     /* ---------------------------------- ex02 ---------------------------------- */
     virtual void execute(Bureaucrat const & executor) const = 0;
+    class NotSignedException : public std::exception {
+        private:
+            virtual const char* what() const throw();
+    };
 };
 
 std::ostream &operator<<(std::ostream &output, Form &form);

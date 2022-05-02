@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 04:04:52 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/29 04:07:59 by gleal            ###   ########.fr       */
+/*   Updated: 2022/04/30 03:51:37 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 
 class PresidentialPardonForm : public Form {
 private:
-    
+   const std::string target; 
 public:
     PresidentialPardonForm();
+    PresidentialPardonForm(const std::string nm, const int mgs, const int mge);
     PresidentialPardonForm(const PresidentialPardonForm &presidentialpardonform);
     ~PresidentialPardonForm();
     PresidentialPardonForm &operator=(const PresidentialPardonForm &presidentialpardonform);

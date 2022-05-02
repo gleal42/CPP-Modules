@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
+#    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/27 00:33:42 by gleal             #+#    #+#              #
-#    Updated: 2022/04/29 04:15:32 by gleal            ###   ########.fr        #
+#    Updated: 2022/04/30 02:18:53 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ OBJDIR := bin/
 DEPDIR := deps/
 SRCS := Bureaucrat.cpp \
 		Form.cpp \
+		PresidentialPardonForm.cpp \
+		RobotomyRequestForm.cpp \
+		ShrubberyCreationForm.cpp \
 		main.cpp
 OBJS := $(SRCS:.cpp=.o)
 DEPS := $(SRCS:.cpp=.d)
