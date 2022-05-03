@@ -3,56 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:57:33 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/03 03:47:15 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/04 00:07:46 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Intern.hpp" 
 
-Form *FormMap::NewShrug(std::string target)
-{
-	return (new ShrubberyCreationForm(target));
-}
-
-Form *FormMap::NewRobot(std::string target)
-{
-	return (new RobotomyRequestForm(target));
-}
-
-Form *FormMap::NewPres(std::string target)
-{
-	return (new PresidentialPardonForm(target));
-}
-
-// , maker[0](&FormMap::NewShrug), maker[1](&FormMap::NewRobot), maker[2](&FormMap::NewPres)
-// : name[0]("shrubbery creation"), name[1]("robotomy request"), name[2]("presidential pardon")
-
-const std::string FormMap::name[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-
-Form *(FormMap::*maker[3])(std::string) = {&FormMap::NewShrug, &FormMap::NewRobot, &FormMap::NewPres};
-
-FormMap::FormMap()
-{
-}
-
-FormMap &FormMap::operator=(const FormMap &fmap)
-{
-	(void)fmap;
-	return (*this);
-}
-
-FormMap::FormMap(const FormMap &fmap)
-{
-	(void)fmap;
-
-}
-
-FormMap::~FormMap()
-{
-}
 
 Intern::Intern()
 {
@@ -76,3 +35,37 @@ Intern::~Intern()
 	std::cout << "Intern Default Destructor" << std::endl;
 }
 
+
+void Intern::makeForm(std::string form, std::string target)
+{
+	int index;
+	Form *(Intern::*maker[3])(std::string) = {&Intern::NewRobot, &Intern::NewShrug, &Intern::NewPres};
+	static const std::string name[3] = {"robotomy request", "shrubbery creation", "presidential pardon"};
+	index = basic_hash(form);
+	(this->*(maker[index]))(target);
+}
+	// (form == name[index]) && (*maker[index])(target);
+
+Form *Intern::NewShrug(std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
+Form *Intern::NewRobot(std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+Form *Intern::NewPres(std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
+int Intern::basic_hash(std::string form)
+{
+	int value = 0;
+	for (size_t i = 0; i < form.length(); i++)
+		value += form[i] * (i + 3);
+	std::cout << (value % 3) << std::endl;
+	return (value % 3);
+}
