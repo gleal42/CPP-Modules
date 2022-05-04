@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 03:38:16 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/02 16:11:37 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/04 02:49:00 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ public:
     Form();
     Form(const std::string nm, const int mgs, const int mge);
     Form(const Form &form);
-    ~Form();
+    virtual ~Form();
     Form &operator=(const Form &form);
     const std::string &getName() const;
     const int    &getSignGrade() const;
