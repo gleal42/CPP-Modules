@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:57:33 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/04 00:07:46 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/04 01:23:05 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ Intern::~Intern()
 void Intern::makeForm(std::string form, std::string target)
 {
 	int index;
-	Form *(Intern::*maker[3])(std::string) = {&Intern::NewRobot, &Intern::NewShrug, &Intern::NewPres};
-	static const std::string name[3] = {"robotomy request", "shrubbery creation", "presidential pardon"};
+	Form *(Intern::*maker[3])(std::string) = {&Intern::NewPres, &Intern::NewRobot, &Intern::NewShrug};
+	static const std::string name[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
 	index = basic_hash(form);
 	(this->*(maker[index]))(target);
 }
@@ -63,9 +63,5 @@ Form *Intern::NewPres(std::string target)
 
 int Intern::basic_hash(std::string form)
 {
-	int value = 0;
-	for (size_t i = 0; i < form.length(); i++)
-		value += form[i] * (i + 3);
-	std::cout << (value % 3) << std::endl;
-	return (value % 3);
+	return ((form[0] + form.length() * 2) % 3);
 }
