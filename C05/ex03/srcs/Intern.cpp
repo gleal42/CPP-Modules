@@ -6,12 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:57:33 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/04 01:23:05 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/04 03:21:57 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Intern.hpp" 
-
 
 Intern::Intern()
 {
@@ -26,8 +25,8 @@ Intern &Intern::operator=(const Intern &intern)
 
 Intern::Intern(const Intern &intern)
 {
+	(void)intern;
 	std::cout << "Intern Copy Constructor" << std::endl;
-	*this = intern;
 }
 
 Intern::~Intern()
@@ -35,18 +34,19 @@ Intern::~Intern()
 	std::cout << "Intern Default Destructor" << std::endl;
 }
 
-
-void Intern::makeForm(std::string form, std::string target)
+Form *Intern::makeForm(std::string form, std::string target)
 {
-	int index;
-	Form *(Intern::*maker[3])(std::string) = {&Intern::NewPres, &Intern::NewRobot, &Intern::NewShrug};
-	static const std::string name[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
-	index = basic_hash(form);
-	(this->*(maker[index]))(target);
+	try {
+		Form *temp = createform(form, target);
+		std::cout << "Intern creates " << temp->getName() << std::endl;
+		return (temp);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	return (0);
 }
-	// (form == name[index]) && (*maker[index])(target);
 
-Form *Intern::NewShrug(std::string target)
+Form *Intern::NewShrub(std::string target)
 {
 	return (new ShrubberyCreationForm(target));
 }
@@ -61,7 +61,38 @@ Form *Intern::NewPres(std::string target)
 	return (new PresidentialPardonForm(target));
 }
 
+// std::cout << ((form[0] + form.length() * 2) % 3) << std::endl;
+
 int Intern::basic_hash(std::string form)
 {
 	return ((form[0] + form.length() * 2) % 3);
+}
+
+Form *Intern::createform(std::string form, std::string target)
+{
+	static const std::string name[3] = {"presidential pardon", "shrubbery creation", "robotomy request"};
+	static Form *(Intern::*maker[3])(std::string) = {&Intern::NewPres, &Intern::NewShrub, &Intern::NewRobot};
+
+	if (form.empty())
+		throw EmptyFormException();
+	string_to_lower(form);
+	if  (form != name[basic_hash(form)])
+		throw UnavailableFormException();
+	return (this->*(maker[basic_hash(form)]))(target);
+}
+
+const char*Intern::UnavailableFormException::what() const throw()
+{
+	return ("Form is not available");
+}
+
+const char*Intern::EmptyFormException::what() const throw()
+{
+	return ("Form is empty");
+}
+
+void	string_to_lower(std::string &str)
+{
+	for (size_t i = 0; i < str.length(); i++)
+		str[i] = std::tolower(str[i]);
 }
