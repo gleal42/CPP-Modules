@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:57:33 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/04 03:21:57 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/04 17:50:56 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ Intern::Intern()
 Intern &Intern::operator=(const Intern &intern)
 {
 	(void)intern;
+	std::cout << "The intern has no name, no grade, no unique characteristics." << std::endl;
 	return *this;
 }
 
@@ -41,7 +42,7 @@ Form *Intern::makeForm(std::string form, std::string target)
 		std::cout << "Intern creates " << temp->getName() << std::endl;
 		return (temp);
 	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	return (0);
 }
