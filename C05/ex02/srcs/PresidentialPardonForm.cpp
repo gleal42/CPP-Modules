@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 02:10:34 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/03 00:46:54 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/04 17:27:21 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &pre
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-    std::cout << "PresidentialPardonForm Default Destructor" << std::endl;
+    std::cout << getName() << " which targets " << target << " was destroyed" << std::endl;
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &presidentialpardonform)

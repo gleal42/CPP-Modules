@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/04 17:26:10 by gleal             #+#    #+#             */
+/*   Updated: 2022/05/04 17:31:54 by gleal            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "ShrubberyCreationForm.hpp" 
 
 ShrubberyCreationForm::ShrubberyCreationForm()
@@ -20,7 +32,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &shrub)
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-    std::cout << "ShrubberyCreationForm Default Destructor" << std::endl;
+    std::cout << getName() << " which targets " << target << " was destroyed" << std::endl;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &shrubberycreationform)
