@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 03:38:19 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/29 01:07:57 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/04 22:11:58 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ Form::Form() : name("Random"), is_signed(0), min_grade_sign(150) , min_grade_exe
 Form::Form(const std::string nm, const int mgs, const int mge) : name(nm), is_signed(0), min_grade_sign(mgs) , min_grade_exec(mge)
 {
     if (min_grade_sign < 1 || min_grade_exec < 1)
-        throw Bureaucrat::GradeTooHighException();
+        throw GradeTooHighException();
     else if (min_grade_sign > 150 || min_grade_exec > 150)
-        throw Bureaucrat::GradeTooLowException();
+        throw GradeTooLowException();
     std::cout << "Form " << name << " was created" << std::endl;
 }
 
@@ -72,10 +72,20 @@ const bool  &Form::getIsSigned() const
 void Form::beSigned(const Bureaucrat& bct)
 {
     if (bct.getGrade() > this->getSignGrade()) {
-        throw Bureaucrat::GradeTooLowException();
+        throw GradeTooLowException();
     } else {
         this->is_signed = true;
     }
+}
+
+const char* Form::GradeTooHighException::what() const throw()
+{
+    return ("Form's Grade is too High (Integer value is too low)");
+}
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+    return ("Form's Grade is too Low (Integer value is too high)");
 }
 
 std::ostream &operator<<(std::ostream &output, Form &form)

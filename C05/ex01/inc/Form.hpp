@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 03:38:16 by gleal             #+#    #+#             */
-/*   Updated: 2022/04/29 01:02:39 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/04 22:12:22 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ public:
     const int    &getExecGrade() const;
     const bool    &getIsSigned() const;
     void beSigned(const Bureaucrat& bct);
+    class GradeTooHighException : public std::exception {
+        private:
+            virtual const char* what() const throw();
+    };
+    class GradeTooLowException : public std::exception {
+        private:
+            virtual const char* what() const throw();
+    };
 };
 
 std::ostream &operator<<(std::ostream &output, Form &form);
