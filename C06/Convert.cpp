@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:52:34 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/05 02:28:33 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/05 02:31:47 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void    Convert::char_conv(std::string &lit)
         throw ImpossibleException();
     else if (!isprint(db))
         throw NonDisplayableException();
+    char_rep = db;
 }
 
 void Convert::print_char()
