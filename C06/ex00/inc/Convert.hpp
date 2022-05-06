@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:53:17 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/06 20:09:14 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/06 23:59:22 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,16 @@ enum ConvertType {
 
 class Convert{
 private:
-    double db;
+    std::string lit;
     enum ConvertType ct;
-    void char_conv(std::string &lit);
-    void int_conv(std::string &lit);
-    void float_conv(std::string &lit);
-    void double_conv(std::string &lit);
-    void edge_conv(std::string &lit);
-    void other_conv(std::string &lit);
-    enum ConvertType find_conv(std::string &lit);
+    void char_conv();
+    void int_conv();
+    void float_conv();
+    void double_conv();
+    void edge_conv();
+    void other_conv();
+    enum ConvertType find_conv();
+    bool edge_case(std::string &lit);
     class ImpossibleException : public std::exception {
         private:
             virtual const char* what() const throw();

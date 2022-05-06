@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:52:34 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/06 20:09:11 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/07 00:04:38 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 Convert::Convert()
 {
-    std::cout << "Convert Default Constructor" << std::endl;
+    std::cout << "Default Constructor" << std::endl;
 }
 
 Convert::Convert(std::string literal)
 {
+    lit = literal;
     std::cout << "Lets Convert " << literal << std::endl;
-    db = std::strtod(literal.c_str(), NULL);
-    ct = find_conv(literal);
-    void (Convert::*conv[6])(std::string &)
-    = {&Convert::char_conv, &Convert::int_conv, &Convert::float_conv, &Convert::double_conv, &Convert::edge_conv, &Convert::other_conv};
-    (this->*conv[ct])(literal);
 }
 
 Convert::Convert(const Convert &convert)
@@ -35,20 +31,22 @@ Convert::Convert(const Convert &convert)
 
 Convert::~Convert()
 {
-    // std::cout << "Convert Default Destructor" << std::endl;
+    std::cout << "Convert Default Destructor" << std::endl;
 }
 
 Convert &Convert::operator=(const Convert &convert)
 {
-    (void)convert;
+    this->lit = convert.lit;
     return *this;
 }
 
-bool edge_case(std::string &lit)
+bool Convert::edge_case(std::string &lit)
 {
     if (lit == "-inff"
     || lit == "+inff"
+    || lit == "inff"
     || lit == "nanf"
+    || lit == "inf"
     || lit == "+inf"
     || lit == "-inf"
     || lit == "nan")
@@ -57,7 +55,7 @@ bool edge_case(std::string &lit)
         return false;
 }
 
-enum ConvertType Convert::find_conv(std::string &lit)
+enum ConvertType Convert::find_conv()
 {
     const size_t fst_dot = lit.find_first_of(".");
     const size_t fst_f = lit.find_first_of("f");
@@ -82,10 +80,10 @@ enum ConvertType Convert::find_conv(std::string &lit)
     return (INT);
 }
 
-void    Convert::char_conv(std::string &lit)
+void    Convert::char_conv()
 {
     char c = *lit.c_str();
-    std::cout << "char: " << c << std::endl;
+    std::cout <<  "char: " << std::setw(3) << std::setfill('\'') << c << std::endl;
     std::cout << "int: " << static_cast<int>(c) << std::endl;
     std::cout.setf( std::ios::fixed, std:: ios::floatfield);
     std::cout << std::setprecision(1);
@@ -93,14 +91,14 @@ void    Convert::char_conv(std::string &lit)
     std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
 
-void    Convert::int_conv(std::string &lit)
+void    Convert::int_conv()
 {
     std::stringstream lit_i(lit);
     int i = 0;
 
     lit_i >> i;
     if (lit_i.fail() || !lit_i.eof())
-        return (this->other_conv(lit));
+        return (this->other_conv());
     if (i > std::numeric_limits<char>::max() || i < std::numeric_limits<char>::min())
         std::cout << "char: Impossible" << std::endl;
     else if (!isprint(i))
@@ -114,7 +112,7 @@ void    Convert::int_conv(std::string &lit)
     std::cout << "double: " << static_cast<double>(i) << std::endl;
 }
 
-void    Convert::float_conv(std::string &lit)
+void    Convert::float_conv()
 {
     std::string float_lit(lit);
 
@@ -123,7 +121,7 @@ void    Convert::float_conv(std::string &lit)
     float f = 0;
     lit_f >> f;
     if (lit_f.fail() || !lit_f.eof())
-        return (this->other_conv(lit));
+        return (this->other_conv());
     if (f > std::numeric_limits<char>::max() || f < std::numeric_limits<char>::min())
         std::cout << "char: Impossible" << std::endl;
     else if (!isprint(f))
@@ -140,7 +138,7 @@ void    Convert::float_conv(std::string &lit)
     std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
 
-void    Convert::double_conv(std::string &lit)
+void    Convert::double_conv()
 {
     double d = strtod(lit.c_str(), NULL);
 
@@ -160,18 +158,9 @@ void    Convert::double_conv(std::string &lit)
     std::cout << "double: " << d << std::endl;
 }
 
-void    Convert::other_conv(std::string &lit)
+void    Convert::edge_conv()
 {
-    (void)lit;
-    std::cout << "char: impossible" << std::endl;
-    std::cout << "int: impossible" << std::endl;
-    std::cout << "float: impossible" << std::endl;
-    std::cout << "double: impossible" << std::endl;
-}
-
-void    Convert::edge_conv(std::string &lit)
-{
-    if (lit == "+inf" || lit == "-inf" || lit == "nan")
+    if (lit == "inf" || lit == "+inf" || lit == "-inf" || lit == "nan")
     {
         double d = strtod(lit.c_str(), NULL);
         std::cout << "char: Impossible" << std::endl;
@@ -194,5 +183,18 @@ void    Convert::edge_conv(std::string &lit)
     }
 }
 
+void    Convert::other_conv()
+{
+    std::cout << "char: impossible" << std::endl;
+    std::cout << "int: impossible" << std::endl;
+    std::cout << "float: impossible" << std::endl;
+    std::cout << "double: impossible" << std::endl;
+}
 
-// std::cout << "char: " << "Non displayable" << std::endl;
+void Convert::print_all()
+{
+    ct = find_conv();
+    static void (Convert::*conv[6])()
+    = {&Convert::char_conv, &Convert::int_conv, &Convert::float_conv, &Convert::double_conv, &Convert::edge_conv, &Convert::other_conv};
+    (this->*conv[ct])(); 
+}
