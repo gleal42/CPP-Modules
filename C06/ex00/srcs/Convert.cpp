@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:52:34 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/06 05:07:21 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/06 05:15:16 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,9 @@ void    Convert::int_conv(std::string &lit)
 {
     double d = strtod(lit.c_str(), NULL);
 
-    if (!isprint(d))
+    if (d > std::numeric_limits<char>::max() || d < std::numeric_limits<char>::min())
+        std::cout << "char: Impossible" << std::endl;
+    else if (!isprint(d))
         std::cout << "char: Non displayable" << std::endl;
     else
         std::cout << "char: " << static_cast<char>(d) << std::endl;
