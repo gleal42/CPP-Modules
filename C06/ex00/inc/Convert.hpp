@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:53:17 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/06 04:31:27 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/06 20:09:14 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 enum ConvertType {
     CHAR,
     INT,
-    OTHER,
     FLOAT,
     DOUBLE,
     EDGE,
+    OTHER,
 };
 
 class Convert{
@@ -33,6 +33,9 @@ private:
     enum ConvertType ct;
     void char_conv(std::string &lit);
     void int_conv(std::string &lit);
+    void float_conv(std::string &lit);
+    void double_conv(std::string &lit);
+    void edge_conv(std::string &lit);
     void other_conv(std::string &lit);
     enum ConvertType find_conv(std::string &lit);
     class ImpossibleException : public std::exception {
