@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 03:38:19 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/04 22:23:06 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/06 23:40:37 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ const bool  &Form::getIsSigned() const
 void Form::beSigned(const Bureaucrat& bct)
 {
     if (bct.getGrade() > this->getSignGrade()) {
-        throw GradeTooLowException();
+        throw Bureaucrat::GradeTooLowException();
     } else {
         this->is_signed = true;
     }
@@ -108,7 +108,7 @@ void Form::execute(Bureaucrat const & executor) const
     if (!getIsSigned()) {
         throw NotSignedException();
     } else if (executor.getGrade() > getExecGrade()) {
-        throw GradeTooLowException() ;
+        throw Bureaucrat::GradeTooLowException() ;
     }
     action();
 }
