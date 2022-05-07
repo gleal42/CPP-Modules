@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:53:17 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/06 23:59:22 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/07 18:25:14 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ private:
     void other_conv();
     enum ConvertType find_conv();
     bool edge_case(std::string &lit);
+    int find_precision(std::string &lit);
     class ImpossibleException : public std::exception {
         private:
             virtual const char* what() const throw();
