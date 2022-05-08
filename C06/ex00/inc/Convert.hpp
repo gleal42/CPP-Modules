@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:53:17 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/07 18:25:14 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/08 01:01:16 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ public:
     Convert(const Convert &convert);
     ~Convert();
     Convert &operator=(const Convert &convert);
+    Convert &operator=(std::string literal);
     void print_all();
 };
 

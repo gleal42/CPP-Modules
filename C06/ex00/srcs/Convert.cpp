@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:52:34 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/07 18:37:13 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/08 01:31:09 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ Convert &Convert::operator=(const Convert &convert)
     this->lit = convert.lit;
     return *this;
 }
+
+Convert &Convert::operator=(std::string literal)
+{
+    this->lit = literal;
+    return *this;
+}
+
 
 bool Convert::edge_case(std::string &lit)
 {
@@ -94,10 +101,11 @@ void    Convert::char_conv()
 int Convert::find_precision(std::string &lit)
 {
     size_t t = lit.find('.');
-    if (t == std::string::npos || t == lit.length() - 1)
+    size_t end = (lit.find('f') == std::string::npos ? lit.length() - 1 : lit.find('f') - 1);
+    if (t == std::string::npos || t == end)
         return (1);
     else
-        return (lit.length() - 1 - (t + 1));
+        return (end - t);
 }
 
 void    Convert::int_conv()
