@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:52:34 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/08 01:31:09 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/08 15:57:09 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 Convert::Convert()
 {
-    std::cout << "Default Constructor" << std::endl;
+    // std::cout << "Default Constructor" << std::endl;
 }
 
 Convert::Convert(std::string literal)
 {
     lit = literal;
-    std::cout << "Lets Convert " << literal << std::endl;
+    // std::cout << "Lets Convert " << literal << std::endl;
 }
 
 Convert::Convert(const Convert &convert)
 {
-    std::cout << "Convert Copy Constructor" << std::endl;
+    // std::cout << "Convert Copy Constructor" << std::endl;
     *this = convert;
 }
 
 Convert::~Convert()
 {
-    std::cout << "Convert Default Destructor" << std::endl;
+    // std::cout << "Convert Default Destructor" << std::endl;
 }
 
 Convert &Convert::operator=(const Convert &convert)
@@ -87,17 +87,6 @@ enum ConvertType Convert::find_conv()
     return (INT);
 }
 
-void    Convert::char_conv()
-{
-    char c = *lit.c_str();
-    std::cout <<  "char: " << '\'' << c << '\'' << std::endl;
-    std::cout << "int: " << static_cast<int>(c) << std::endl;
-    std::cout.setf( std::ios::fixed, std:: ios::floatfield);
-    std::cout << std::setprecision(1);
-    std::cout << "float: " << static_cast<float>(c) << 'f' << std::endl;
-    std::cout << "double: " << static_cast<double>(c) << std::endl;
-}
-
 int Convert::find_precision(std::string &lit)
 {
     size_t t = lit.find('.');
@@ -106,6 +95,20 @@ int Convert::find_precision(std::string &lit)
         return (1);
     else
         return (end - t);
+}
+
+void    Convert::char_conv()
+{
+    char c = *lit.c_str();
+    if (!isprint(c))
+        std::cout << "char: Non displayable" << std::endl;
+    else
+        std::cout <<  "char: " << '\'' << c << '\'' << std::endl;
+    std::cout << "int: " << static_cast<int>(c) << std::endl;
+    std::cout.setf( std::ios::fixed, std:: ios::floatfield);
+    std::cout << std::setprecision(1);
+    std::cout << "float: " << static_cast<float>(c) << 'f' << std::endl;
+    std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
 
 void    Convert::int_conv()
@@ -117,7 +120,7 @@ void    Convert::int_conv()
     if (lit_i.fail() || !lit_i.eof())
         return (this->other_conv());
     if (i > std::numeric_limits<char>::max() || i < std::numeric_limits<char>::min())
-        std::cout << "char: Impossible" << std::endl;
+        std::cout << "char: impossible" << std::endl;
     else if (!isprint(i))
         std::cout << "char: Non displayable" << std::endl;
     else
@@ -140,13 +143,13 @@ void    Convert::float_conv()
     if (lit_f.fail() || !lit_f.eof())
         return (this->other_conv());
     if (f > std::numeric_limits<char>::max() || f < std::numeric_limits<char>::min())
-        std::cout << "char: Impossible" << std::endl;
+        std::cout << "char: impossible" << std::endl;
     else if (!isprint(f))
         std::cout << "char: Non displayable" << std::endl;
     else
         std::cout << "char: " << '\'' << static_cast<char>(f) << '\'' << std::endl;
     if (f > std::numeric_limits<int>::max() || f < std::numeric_limits<int>::min())
-        std::cout << "int: Impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << static_cast<int>(f) << std::endl;
     std::cout.setf( std::ios::fixed, std:: ios::floatfield);
@@ -160,13 +163,13 @@ void    Convert::double_conv()
     double d = strtod(lit.c_str(), NULL);
 
     if (d > std::numeric_limits<char>::max() || d < std::numeric_limits<char>::min())
-        std::cout << "char: Impossible" << std::endl;
+        std::cout << "char: impossible" << std::endl;
     else if (!isprint(d))
         std::cout << "char: Non displayable" << std::endl;
     else
         std::cout << "char: " << '\'' << static_cast<char>(d) << '\'' << std::endl;
     if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
-        std::cout << "int: Impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << static_cast<int>(d) << std::endl;
     std::cout.setf( std::ios::fixed, std:: ios::floatfield);
@@ -180,8 +183,8 @@ void    Convert::edge_conv()
     if (lit == "inf" || lit == "+inf" || lit == "-inf" || lit == "nan")
     {
         double d = strtod(lit.c_str(), NULL);
-        std::cout << "char: Impossible" << std::endl;
-        std::cout << "int: Impossible" << std::endl;
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
         std::cout << "float: " << static_cast<float>(d) << 'f' << std::endl;
         std::cout << "double: " << d << std::endl;
         return ;
@@ -193,8 +196,8 @@ void    Convert::edge_conv()
         std::stringstream lit_f(float_lit);
         float f = 0;
         lit_f >> f;
-        std::cout << "char: Impossible" << std::endl;
-        std::cout << "int: Impossible" << std::endl;
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
         std::cout << "float: " << f << 'f' << std::endl;
         std::cout << "double: " << static_cast<double>(f) << std::endl;
     }
