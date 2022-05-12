@@ -6,7 +6,7 @@
 #    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/07 19:19:29 by gleal             #+#    #+#              #
-#    Updated: 2022/05/08 04:22:23 by gleal            ###   ########.fr        #
+#    Updated: 2022/05/12 20:09:31 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCDIR := srcs/
 OBJDIR := bin/
 DEPDIR := deps/
 SRCS := main.cpp \
-		Awesome.cpp
+		Awesome.cpp \
+		Bad.cpp
 OBJS := $(SRCS:.cpp=.o)
 DEPS := $(SRCS:.cpp=.d)
 SRCS := $(addprefix $(SRCDIR), $(SRCS))

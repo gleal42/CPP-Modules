@@ -6,12 +6,13 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 18:49:56 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/08 04:22:43 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/12 20:26:10 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "whatever.hpp"
 #include "Awesome.hpp"
+#include "Bad.hpp"
 
 int extra_test()
 {
@@ -23,6 +24,27 @@ int extra_test()
     std::cout << max(a, b) << std::endl;
     std::cout << min(a, b) << std::endl;
     return (0);
+}
+
+/* swap will still work for Bad class because
+equal sign operator is mandatory for canonycal form */
+
+void invalid_test()
+{
+    // std::cout << std::endl;
+    // std::cout << "Invalid tests" << std::endl;
+    // std::cout << std::endl;
+    // char c = 'a';
+    // int a = 45;
+    // min (a, c);
+    // max (a, c);
+    // swap (a, c);
+
+    // Bad person1;
+    // Bad person2;
+    // min(person1, person2);
+    // max(person1, person2);
+    // swap(person1, person2);
 }
 
 int main( void )
@@ -43,6 +65,7 @@ int main( void )
     std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
 
     extra_test();
+    invalid_test();
 
     return 0;
 }
