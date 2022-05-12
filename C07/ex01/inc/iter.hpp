@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:26:48 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/08 19:44:14 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/12 20:37:39 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    iter(T ptr[], std::size_t len, U ft)
     return ;
 
 }
-// In order a template function like print we must use this
+// In order to use functions that return void inside another template (like print.hpp) we must use this
 
 template <class T>
 void    iter(T ptr[], std::size_t len, void (*ft)(T const &))
@@ -36,7 +36,7 @@ void    iter(T ptr[], std::size_t len, void (*ft)(T const &))
     }
     return ;
 }
-// In order to apply template functions in which we can change the values
+// In order to apply template functions in which we can change the values (like change.hpp)
 
 template <class T>
 void    iter(T ptr[], std::size_t len, void (*ft)(T &))

@@ -6,12 +6,12 @@
 #    By: gleal <gleal@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/08 22:19:06 by gleal             #+#    #+#              #
-#    Updated: 2022/05/09 01:37:02 by gleal            ###   ########.fr        #
+#    Updated: 2022/05/12 21:55:47 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX := c++
-CXXFLAGS := -Wall -Wextra -Werror -std=c++98
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 CPPFLAGS := -Iinc
 NAME := array
 SRCDIR := srcs/

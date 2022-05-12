@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:50:17 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/08 20:27:15 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/12 20:42:13 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void add_and_print(int d)
 
 bool is_digit(int d)
 {
-    std::cout << ((d > '0' && d < '9') ?  "true" : "false") << std::endl;
-    return (d > '0' && d < '9') ?  true : false;
+    std::cout << ((d >= '0' && d <= '9') ?  "true" : "false") << std::endl;
+    return (d >= '0' && d <= '9') ?  true : false;
 }
 
 int main()
@@ -39,7 +39,7 @@ int main()
     char c[] = "Ola01234";
     iter( c, 8, is_digit );
     std::cout << std::endl;
-    // still need to specify that it is not const (char template specification)
+    // still need to specify that it is not const since non-const can be converted to const
     iter( c, 8, &change<char>);
     iter( c, 8, print );
     std::cout << std::endl;

@@ -6,12 +6,13 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 20:36:52 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/09 02:24:15 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/12 21:00:23 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 #include <iostream>
+#define MAX_VAL 750
 
 void    empty_array_tests()
 {
@@ -154,11 +155,64 @@ void    const_tests()
     std::cout << a[4] << std::endl;
 }
 
+void    intra_tests()
+{
+    std::cout << std::endl;
+    std::cout << "Provided tests" << std::endl;
+    std::cout << std::endl;
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+    }
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return ;
+        }
+    }
+    try
+    {
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;//
+    return ;
+}
+
 int main()
 {
     empty_array_tests();
     full_array_tests();
     extra_access_tests();
     const_tests();
-
+    intra_tests();
 }
