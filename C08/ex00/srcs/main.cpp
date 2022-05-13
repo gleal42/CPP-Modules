@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 19:10:00 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/10 00:33:01 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/13 22:34:58 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void lst_tests()
 	}
 	std::cout << std::endl;
 }
+
+// If we use Container adaptors or Arrays
 
 void bad_tests()
 {
