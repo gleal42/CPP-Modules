@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 00:39:48 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/11 02:42:03 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/13 22:53:44 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ int Span::longestSpan()
 		- *std::min_element(vec.begin(), vec.end()));
 }
 
-min_diff::min_diff(int &min_d, int &prev) : low_diff(min_d), before_value(prev)
+Span::min_diff::min_diff(int &min_d, int &prev) : low_diff(min_d), before_value(prev)
 {
 }
 
-void	min_diff::operator()(int &cur_nbr)
+void	Span::min_diff::operator()(int &cur_nbr)
 {
 	// std::cout << cur_nbr << std::endl;
 	low_diff = std::min(cur_nbr - before_value, low_diff);

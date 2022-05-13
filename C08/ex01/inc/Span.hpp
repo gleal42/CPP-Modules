@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 00:39:51 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/11 02:40:39 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/13 23:31:29 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,18 @@
 #include <algorithm>
 #include <numeric>
 
-struct min_diff {
-	private:
-		int &low_diff;
-		int &before_value;
-	public:
-		min_diff(int &min_d, int &prev);
-		void	operator()(int &d);
-};
-
 class Span {
 private:
 	std::vector<int> vec;
 	unsigned int N;
-
+	struct min_diff {
+		private:
+			int &low_diff;
+			int &before_value;
+		public:
+			min_diff(int &min_d, int &prev);
+			void	operator()(int &d);
+	};
 public:
 	Span();
 	Span(unsigned int N);
