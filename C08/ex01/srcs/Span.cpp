@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 00:39:48 by gleal             #+#    #+#             */
-/*   Updated: 2022/05/13 22:53:44 by gleal            ###   ########.fr       */
+/*   Updated: 2022/05/14 00:02:45 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ void Span::fill_span(std::vector<int>::iterator begin, std::vector<int>::iterato
 	if (vec.size() + std::distance(begin, end) > N)
 		throw std::out_of_range("Not enough space in Container for range");
 	vec.insert(vec.end(), begin, end);
-	
-
 }
 
 int Span::shortestSpan()
@@ -92,5 +90,5 @@ void Span::print()
 	std::cout << "Vector contains" << std::endl;
 	for (std::vector<int>::iterator it = vec.begin(); it<vec.end(); it++)
 		std::cout << *it << " ";
-std::cout << std::endl;
+	std::cout << std::endl;
 }
