@@ -289,8 +289,6 @@ Here's a great page to refresh your memory:
 
 Cédric Dufour also published a great visualizer in that thread.
 > http://jsfiddle.net/PerroAZUL/zdaY8/1/
-<br/>
-
 
 ### 5. Other
 
@@ -298,6 +296,70 @@ Cédric Dufour also published a great visualizer in that thread.
 
 #### 5.1. Static Functions
 - https://www.geeksforgeeks.org/static-keyword-cpp/
+<br/>
 
 ## C03
 ### Inheritance
+
+### ex01 Derived Class 
+
+We can create [a class based on another class](https://www.cplusplus.com/doc/oldtutorial/inheritance/) (with access to all the same functions and variables
+
+And we can also [replace what the different functions of the derived class](https://www.cplusplus.com/doc/oldtutorial/polymorphism/) do using the 'virtual' keyword
+
+### ex03 Ambiguities
+
+
+### 1 Same function name and function shadowing
+
+If in base class we have function ft_random
+and we redeclare the same function in derived class then one of the functions will get shadowed
+
+```
+class Base {
+	void ft_random();
+};
+
+class Derived : public Base {
+	void ft_random();
+};
+
+int main()
+{
+	Base *a = new Derived();
+	a->ft_random();
+	Derived *b = a;
+	b->ft_random();
+}
+```
+
+Here a and b will execute different functions based on the pointer we are using.<br/>
+Usually this behaviour is undesirable.<br/>
+
+To fix it we would need to add virtual to Base class ft_random
+```
+class Base {
+	virtual void ft_random();
+};
+...
+```
+
+Using the same main, we could see that the executed function would be the same.<br/>
+
+### Deriving from 2 functions with common Base class
+
+class Base;<br/>
+class Derived_1 : public Base;<br/>
+class Derived_2 : public Base;<br/>
+class Diamond : public Derived_1, Derived_2;<br/>
+
+In this case, we don't want Base Class to be constructed twice just because Derived_1 and Derived_2 use it.<br/>
+
+To fix this issue we add virtual to the inheritance itself and the issue will be solved:<br/>
+
+class Derived_1 : public virtual Base;<br/>
+class Derived_2 : public virtual Base;<br/>
+
+- https://docs.microsoft.com/en-us/cpp/cpp/multiple-base-classes?view=msvc-170
+- https://www.ibm.com/docs/en/zos/2.4.0?topic=only-virtual-base-classes-c
+- https://www.ibm.com/docs/en/zos/2.4.0?topic=only-ambiguous-base-classes-c
