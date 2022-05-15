@@ -2,7 +2,9 @@
 Introduction to C++
 
 ## C00
+### Introduction to CPP
 
+<br/>
 > Example how code in header file and cpp file should be separated:<br/>
 > https://docs.microsoft.com/en-us/cpp/cpp/header-files-cpp?view=msvc-170
 
@@ -44,6 +46,8 @@ https://www.geeksforgeeks.org/how-to-find-index-of-a-given-element-in-a-vector-i
 
 
 ## C01
+### Use of Classes
+<br/>
 
 ### ex00
 1. The the new expression (is equivalent to malloc in C).<br/>
@@ -53,7 +57,7 @@ https://www.geeksforgeeks.org/how-to-find-index-of-a-given-element-in-a-vector-i
 In order to free the memory we use the [delete expression](https://docs.microsoft.com/en-us/cpp/cpp/delete-operator-cpp?view=msvc-170)
 
 ### ex01
-1.new\[] and delete\[] expressions to declare and delete arrays of objects.
+1. [new\[\]](https://www.cplusplus.com/reference/new/operator%20new%5B%5D/) and delete\[] expressions to declare and delete arrays of objects.
 2. It is not possible to use parametrized contructors on an array craeted with new.
 
 ### ex02
@@ -63,6 +67,10 @@ In order to free the memory we use the [delete expression](https://docs.microsof
 1. Pointers can be NULL and must be protected.
 2. References can't be NULL and must be initiated using [initialization lists](https://www.cprogramming.com/tutorial/initialization-lists-c++.html).
 3. If objects are const then functions should have const after function `const objc function() const`
+
+- https://www.ibm.com/docs/en/zos/2.3.0?topic=only-initialization-base-classes-members-c
+- https://stackoverflow.com/questions/2785612/c-what-does-the-colon-after-a-constructor-mean
+- https://stackoverflow.com/questions/19576458/constructor-for-must-explicitly-initialize-the-reference-member
 
 ### ex04
 1. Working with buffers (redirecting ifstream to stringstring and using the straem string buffer )).<br/>
@@ -84,11 +92,15 @@ https://stackoverflow.com/questions/5093090/whats-the-syntax-for-declaring-an-ar
 
 ### ex06
 1. Using [switch statement](https://www.w3schools.com/cpp/cpp_switch.asp)
+<br/>
 
 ## C02
+### Contructors and Operator Overload (The Orthodox Canonical Class Form (OCCF)/ Fixed Point Numbers
 
 ### Main Concepts
 1. Copy Constructor vs Overloading assignment operator
+2. Fixed Point Number
+3. Operator Overloading
 
 ### 1. Copy Constructor vs Overloading assignment operator
 
@@ -111,9 +123,17 @@ There's a difference between the equal sign in `a = b` and `c = b`:<br/>
 `a = b` is a copy constructor and could also be written `a(b)`.<br/>
 `c = b` is an assignment done after initialization.<br/>
 
+#### Other References
+- https://www.geeksforgeeks.org/copy-constructor-vs-assignment-operator-in-c/
+- https://www.geeksforgeeks.org/copy-constructor-in-cpp/
+- https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/
 
-### 2. Ex03 - Copy Assignment overload when members are const (workaround) 
+### 2. Fixed Point Number
+[Example](https://embeddedartistry.com/blog/2018/07/12/simple-fixed-point-conversion-in-c/) of Conversion of int and float 
 
+### 3. Operator Overloading
+
+### 3.1 Assignment overload
 In the PDFs we are told that we must have const private members as well as an assignment operator overload.
 
 In theory this would make sense because an assignment overloader usually changes the data inside the class to match those of the parameter.
@@ -136,11 +156,28 @@ Point &Point::operator=(const Point &point)
 If we provide a buffer with enough space as a parameter then new will result in initialization and no new allocation will be done.
 Besides, when we leave the scope we are in, pointer is dealocated.
 
-https://stackoverflow.com/questions/24091979/what-is-this-syntax-new-this-t
-https://www.cplusplus.com/reference/new/operator%20new/
-https://en.cppreference.com/w/cpp/language/new#Placement_new
+- https://stackoverflow.com/questions/24091979/what-is-this-syntax-new-this-t
+- https://www.cplusplus.com/reference/new/operator%20new/
+- https://en.cppreference.com/w/cpp/language/new#Placement_new
+- https://www.geeksforgeeks.org/placement-new-operator-cpp/
 
-### 3. Ex03 - Barycentric coordinates explanation
+### 3.2 Output redirection overload
+
+- https://www.tutorialspoint.com/cplusplus/input_output_operators_overloading.htm
+- https://docs.microsoft.com/en-us/cpp/standard-library/overloading-the-output-operator-for-your-own-classes?view=msvc-170
+- https://stackoverflow.com/questions/23335209/error-overloaded-operator-must-be-a-binary-operator-has-3-parameters
+
+### 3.3 Pre and post increment
+
+- https://www.programiz.com/cpp-programming/operator-overloading
+- https://www.programiz.com/cpp-programming/increment-decrement-operator-overloading
+- https://www.geeksforgeeks.org/operator-overloading-c/
+- https://www.geeksforgeeks.org/increment-and-decrement-operator-overloading-in-c/
+- https://docs.microsoft.com/en-us/cpp/cpp/operator-overloading?view=msvc-170
+- https://docs.microsoft.com/en-us/cpp/cpp/increment-and-decrement-operator-overloading-cpp?view=msvc-170
+- https://www.ibm.com/docs/en/zos/2.4.0?topic=only-overloading-operators-c
+
+### 4. Barycentric coordinates explanation
 
 The Barycentric Coordinate System is used in 2d and 3d to describe how a point is in relation to a simplex (e.g. triangle and a plane).
 
@@ -240,9 +277,27 @@ Here's a great page to refresh your memory:
 - https://www.mathsisfun.com/algebra/matrix-inverse-row-operations-gauss-jordan.html
 - https://www.mathsisfun.com/algebra/matrix-inverse-minors-cofactors-adjugate.html
 
-### Other References
+#### Other References
 - http://totologic.blogspot.com/2014/01/accurate-point-in-triangle-test.html
 - https://stackoverflow.com/questions/2049582/how-to-determine-if-a-point-is-in-a-2d-triangle
+- https://stackoverflow.com/questions/217578/how-can-i-determine-whether-a-2d-point-is-within-a-polygon
+- https://stackoverflow.com/questions/11716268/point-in-polygon-algorithm
+- https://stackoverflow.com/questions/8721406/how-to-determine-if-a-point-is-inside-a-2d-convex-polygon
+- https://www.mathsisfun.com/algebra/matrix-determinant.html
+- https://gamedev.stackexchange.com/questions/70075/how-can-i-find-the-perpendicular-to-a-2d-vector
+- https://math.stackexchange.com/questions/51326/determining-if-an-arbitrary-point-lies-inside-a-triangle-defined-by-three-points/1884485#1884485
 
 Cédric Dufour also published a great visualizer in that thread.
 > http://jsfiddle.net/PerroAZUL/zdaY8/1/
+<br/>
+
+
+### 5. Other
+
+- https://www.geeksforgeeks.org/copy-constructor-vs-assignment-operator-in-c/
+
+#### 5.1. Static Functions
+- https://www.geeksforgeeks.org/static-keyword-cpp/
+
+## C03
+### Inheritance
