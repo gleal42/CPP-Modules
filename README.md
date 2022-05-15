@@ -333,8 +333,8 @@ int main()
 }
 ```
 
-Here a and b will execute different functions based on the pointer we are using.<br/>
-Usually this behaviour is undesirable.<br/>
+Here a and b will execute different functions based on the pointer we are using.
+In order to call a function with the same name from base class we need to use a [specific syntax](https://stackoverflow.com/questions/29172315/c-inheritance-of-functions-with-same-name) <br/>
 
 To fix it we would need to add virtual to Base class ft_random
 ```
@@ -471,6 +471,56 @@ b.add(5);
 will not affect a in any way.
 
 #### 3 Dynamic Cast
+
+Let's imagine a base class Animal and 2 derived classes
+```
+class Animal {
+};
+
+class Cat: public Animal {
+};
+
+class Dog: public Animal {
+};
+```
+
+We can easily convert a Dog object to Animal object (upcast):<br/>
+
+```
+int main()
+{
+	Cat a;
+	Animal &b = a;
+	
+	Dog *c;
+	Animal *d = &c;
+}
+```
+However, if you go the opposite way (Animal to Dog) it will not compile. <br/>
+
+```
+int main()
+{
+	Animal a;
+	Cat &b = a;
+	
+	Animal *c;
+	Dog *d = &c;
+}
+```
+
+For these cases we should use dynamic cast:
+
+```
+int main()
+{
+	Animal a;
+	Cat &b = dynamic_cast<Cat &>a;
+	
+	Animal *c;
+	Dog *d = dynamic_cast<Dog *>&c;
+}
+```
 
 ### ex03 Interfaces
 
