@@ -363,3 +363,92 @@ class Derived_2 : public virtual Base;<br/>
 - https://docs.microsoft.com/en-us/cpp/cpp/multiple-base-classes?view=msvc-170
 - https://www.ibm.com/docs/en/zos/2.4.0?topic=only-virtual-base-classes-c
 - https://www.ibm.com/docs/en/zos/2.4.0?topic=only-ambiguous-base-classes-c
+
+### 3 Inheriting the variable values
+
+In ex03 we are asked to use attack values from one derived class and hp from another.<br/>
+
+This is not as simple as it seems because they all share the Base Class variables and only set different values in their constructors.<br/>
+In order to do what we are asked we can:<br/>
+
+- Create temporary Derived classes inside the Diamond constructor and extract the hp and attack values
+- Have a setter with fixed values in each class (this was the option I chose)
+- Redeclare the variable hp, attack... in each base class (forbidden by the subject).
+
+Most people were just doing:<br/>
+`this->hp = ScavTrap::hp;` , however this means the same as `FragTrap::hp` or `ClapTrap::hp`, they all share the same variable. <br/>
+
+## C04
+### Polimorphism/ Abstract Classes and Interfaces
+
+### ex00 Polimorphism
+
+Here we revisit the topic mentioned in C03, where we have the option to overload functions with the same name in base class and derived class.<br/>
+
+As we mentioned before, if we define that all animals must make noise we can create a function:<br/>
+```
+class Animal {
+	void	makenoise() {std::coud << "NOISEEE" << std::endl;};
+}
+```
+
+However, after we define an animal we want the noise to be specific to every animal <br/>
+
+```
+class Animal {
+	virtual void	makenoise() {std::coud << "NOISEEE" << std::endl;};
+}
+
+class Cat {
+	void	makenoise() {std::coud << "miau" << std::endl;};
+}
+```
+
+Notice that Animal now has virtual before the function to show that it is meant to be redefined in derived classes. <br/>
+
+### ex01 Virtual Destructor
+
+When we define a derived class we should have a virtual destructor, otherwise it won't be called when we have a pointer to base class. <br/>
+
+```
+class Animal {
+	virtual ~Animal ();
+}
+
+class Cat {
+	Cat () {new brain;};
+	~Cat () {delete brain;};
+}
+
+int main()
+{
+	Animal *a = new Cat;
+}
+```
+
+This will leak because Cat destructor is never called. <br/>
+- https://www.geeksforgeeks.org/virtual-destructor/
+
+### ex02 Abstract Class
+
+All member functions must have an implementation.
+For an Abstract class we explicitly say that there won't be an implementation for that function, meaning that we now can't create an object of the base class.
+
+```
+class Animal {
+	void random () = 0;
+}
+
+int main()
+{
+	Animal a;
+}
+```
+Will not compile. <br/>
+
+- https://docs.microsoft.com/en-us/cpp/cpp/abstract-classes-cpp?view=msvc-170#:~:text=You%20create%20an%20abstract%20class,%2C%20too%2C%20are%20abstract%20classes.
+
+
+### ex03 Interfaces
+
+An interface is basically an Abstract class where there don't implement any functions. (we don't even need a cpp file).
