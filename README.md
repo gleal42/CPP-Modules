@@ -429,7 +429,9 @@ int main()
 This will leak because Cat destructor is never called. <br/>
 - https://www.geeksforgeeks.org/virtual-destructor/
 
-### ex02 Abstract Class
+### ex02
+
+#### 1 Abstract Class
 
 All member functions must have an implementation.
 For an Abstract class we explicitly say that there won't be an implementation for that function, meaning that we now can't create an object of the base class.
@@ -448,7 +450,30 @@ Will not compile. <br/>
 
 - https://docs.microsoft.com/en-us/cpp/cpp/abstract-classes-cpp?view=msvc-170#:~:text=You%20create%20an%20abstract%20class,%2C%20too%2C%20are%20abstract%20classes.
 
+#### 2 Deep Copies
+
+A Deep copy means that when we construct a new object `Object b(a)` or assign one object to another: <br/>
+```
+Object a;
+Object b;
+b = a;
+```
+
+There is no link between the two and only the values of one are assigned to the variables of the other.
+
+```
+Object a;
+Object b;
+b = a;
+b.add(5);
+```
+
+will not affect a in any way.
+
+#### 3 Dynamic Cast
 
 ### ex03 Interfaces
 
 An interface is basically an Abstract class where there don't implement any functions. (we don't even need a cpp file).
+
+
