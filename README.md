@@ -161,6 +161,11 @@ Besides, when we leave the scope we are in, pointer is dealocated.
 - https://en.cppreference.com/w/cpp/language/new#Placement_new
 - https://www.geeksforgeeks.org/placement-new-operator-cpp/
 
+However, this may not work for some compilers:<br/>
+- https://stackoverflow.com/questions/2006161/changing-the-value-of-const-variable-in-c
+- https://stackoverflow.com/questions/4136156/const-member-and-assignment-operator-how-to-avoid-the-undefined-behavior
+- 
+
 ### 3.2 Output redirection overload
 
 - https://www.tutorialspoint.com/cplusplus/input_output_operators_overloading.htm
@@ -293,6 +298,9 @@ Cédric Dufour also published a great visualizer in that thread.
 ### 5. Other
 
 - https://www.geeksforgeeks.org/copy-constructor-vs-assignment-operator-in-c/
+- https://www.tutorialspoint.com/cplusplus/input_output_operators_overloading.htm
+- https://www.mygreatlearning.com/blog/constructor-in-cpp/
+- https://stackoverflow.com/questions/6536805/initializing-a-static-const-array-of-const-strings-in-c
 
 #### 5.1. Static Functions
 - https://www.geeksforgeeks.org/static-keyword-cpp/
@@ -527,3 +535,87 @@ int main()
 An interface is basically an Abstract class where there don't implement any functions. (we don't even need a cpp file).
 
 
+## C05
+### Exceptions
+
+#### Creating Custom Exceptions
+
+- https://riptutorial.com/cplusplus/example/23640/custom-exception
+- https://www.tutorialspoint.com/cplusplus/cpp_exceptions_handling.htm#:~:text=A%20C%2B%2B%20exception%20is%20a,try%2C%20catch%2C%20and%20throw
+
+#### Getting random value between 0 and n
+
+- https://www.cplusplus.com/reference/cstdlib/rand/
+- https://www.cplusplus.com/reference/cstdlib/srand/
+
+
+## C06
+### Casts
+
+#### ex00 static_cast
+Here we are asked 3 things:
+
+1. Identify the type of string literals (char, int, float and double)
+2. Convert string to that type
+3. Reconvert explicitly to the remaining types
+4. If value is not printable (chars) or is outside limits then impossible should be displayed.
+
+The identification process for me was basically a set of character validations.<br/>
+I used string streams to convert from string to number (redirecting a string stream inside an int variable for example).<br/>
+For floats I had to remove the last 'f' in order for the conversion to work.<br/>
+
+The only function from std library that is std98++ seems to be strtod. However this only allows us to convert to double.<br/>
+For the remaining conversions there aren't such functions (at least that i know of).<br/>
+
+For the explicit reconversion I used the static_cast function.<br/>
+
+- https://stackoverflow.com/questions/27093288/c-stringstream-error-handling
+- https://stackoverflow.com/questions/34355465/c-string-to-double-conversion-using-stringstream-gives-precision-error
+- https://stackoverflow.com/questions/4917265/can-i-tell-if-a-stdstring-represents-a-number-using-stringstream
+- https://stackoverflow.com/questions/33198341/stringstream-string-to-integer-conversion-in-c
+
+#### ex01 reinterpret_cast
+
+This function allows us to cast a function pointer to an integer that stores that address and from integer to pointer.<br/>
+
+#### ex02 dynamic_cast
+
+Converting from base class to derived.<br/>
+
+If we convert a pointer and it fails it returns null<br/>
+If we convert a reference and it fails it throws an exception<br/>
+
+## C07
+### Templates
+
+Templates are basically a general function in which we don't know the types of certain parameters, variables return values, etc..
+
+#### ex00 Swap min and max
+We need to create a template for swap min and max. <br/>
+We quickly realize that for swap we simply need a valid assignment operator and for min and max valid comparison operators (> and <)
+
+- https://www.cplusplus.com/doc/oldtutorial/templates/
+
+#### ex01 Iter
+
+We are asked to create a template which a function to each member of an array.
+The difficulty here is to find how to create a membertype which accepts every type of function.
+
+#### ex02 Array
+
+Here we develop a class template, using a \[\] subscriptor with exceptions inside.<br/>
+Here the main difficulty was figuring out what was meant by empty array.
+
+## C08
+### Containers and algorithms
+
+In this module we are asked to use containers and algorithms to solve the exercises.
+
+#### ex00 easyfind
+
+We are asked to find an int inside a container and throw an exception if we don't. <br/>
+For me it makes sense to return an iterator in order to make sure that the parameter is a container (it wont compile if we try to use it with a regular array).<br/>
+
+#### ex01 Span
+
+We are asked to create a class in which we have to store numbers and , the size of the array and several functions to : <br/>
