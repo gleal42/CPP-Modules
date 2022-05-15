@@ -601,6 +601,8 @@ We quickly realize that for swap we simply need a valid assignment operator and 
 We are asked to create a template which a function to each member of an array.
 The difficulty here is to find how to create a membertype which accepts every type of function.
 
+
+
 #### ex02 Array
 
 Here we develop a class template, using a \[\] subscriptor with exceptions inside.<br/>
@@ -609,13 +611,89 @@ Here the main difficulty was figuring out what was meant by empty array.
 ## C08
 ### Containers and algorithms
 
-In this module we are asked to use containers and algorithms to solve the exercises.
+In this module we are asked to use containers and algorithms to solve the exercises. <br/>
+- https://www.cplusplus.com/reference/stl/
+- https://stackoverflow.com/questions/12702561/iterate-through-a-c-vector-using-a-for-loop/12702625#12702625
+
 
 #### ex00 easyfind
 
 We are asked to find an int inside a container and throw an exception if we don't. <br/>
 For me it makes sense to return an iterator in order to make sure that the parameter is a container (it wont compile if we try to use it with a regular array).<br/>
 
+- https://www.cplusplus.com/reference/iterator/iterator/
+
 #### ex01 Span
 
-We are asked to create a class in which we have to store numbers and , the size of the array and several functions to : <br/>
+We are asked to create a class in which we have to store numbers (I used a container since we need to use them as much as possible), the size of the array and several functions to add numbers and retrieve information about them: <br/>
+
+The most exciting part about this exercise was learning about functors inside for_each functions.
+
+https://en.cppreference.com/w/cpp/algorithm/for_each
+
+If inside a class we overload the parenthesis operator() it will work like a function
+
+```
+class Test {
+public:
+    F(std::string a, std::string b, std::string c) : a(a), b(b), c(c) {}
+
+    void operator()(int nbr) const {
+        std::cout << a << " my name is " << b << " and I will " << c << " at " << nbr << std::endl;
+    }
+private:
+    std::string a;
+    std::string b;
+    std::string c;
+};
+
+std::vector<int> vec;
+vec.push_back(1);
+vec.push_back(2);
+
+for_each(vec.begin(), vec.end(), F("Hello", "Goncalo", "Go party"));
+```
+
+This would print: <br/>
+Hello my name is Goncalo and I will Go party at 1 <br/>
+Hello my name is Goncalo and I will Go party at 2 <br/>
+
+- https://en.cppreference.com/w/cpp/algorithm/for_each
+- https://stackoverflow.com/a/10516534
+- https://stackoverflow.com/a/28437616
+
+#### ex02 Mutant Stack
+
+#### Inherit from template class
+- https://stackoverflow.com/questions/8810224/inheriting-from-a-template-class-in-c
+
+#### Inherit from stack to get iterators
+https://en.cppreference.com/w/cpp/container/stack
+
+So a stack is a container adaptor. Meaning it has an underlying container. However it is not usually not accessible in std::stack (protected member).<br/>
+
+But because it is protected, this means that derived functions might potentially access it.<br/>
+- https://stackoverflow.com/a/49001896
+- https://stackoverflow.com/questions/36621225/get-container-behind-stdstack
+
+#### Member types
+
+Another new concept is that we can store typenames inside classes:
+
+```
+class a {
+	
+};
+```
+
+https://riptutorial.com/cplusplus/example/14397/member-types-and-aliases
+
+#### Iterators
+Iterator is basically a class with many typenames stored inside.
+
+### Other links
+
+I thought I would use the function mem_fun_ref but it wasn't necessary after all. It should be used to call member functions, but I still haven't figured out in which instances
+
+- https://en.cppreference.com/w/cpp/utility/functional/mem_fun_ref
+
